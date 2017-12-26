@@ -198,11 +198,25 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Domain\ApplicationUser.cs" />
+    <Compile Include="Domain\Mark.cs" />
+    <Compile Include="Domain\SchoolClass.cs" />
+    <Compile Include="Domain\SchoolClassSubject.cs" />
+    <Compile Include="Domain\Student.cs" />
+    <Compile Include="Domain\Subject.cs" />
+    <Compile Include="Domain\Teacher.cs" />
+    <Compile Include="Domain\TeacherSchoolClass.cs" />
+    <Compile Include="Domain\TeacherSubject.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712261830349_Initial.cs" />
+    <Compile Include="Migrations\201712261830349_Initial.Designer.cs">
+      <DependentUpon>201712261830349_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -278,6 +292,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712261830349_Initial.resx">
+      <DependentUpon>201712261830349_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using SchoolJournal.Models;
+using SchoolJournal.Data;
+using SchoolJournal.Domain;
 
 namespace SchoolJournal
 {

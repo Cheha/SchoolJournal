@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SchoolJournal.Models;
+using SchoolJournal.Domain;
+using SchoolJournal.Data;
 
 namespace SchoolJournal
 {
