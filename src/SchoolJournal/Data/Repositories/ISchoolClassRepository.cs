@@ -8,7 +8,7 @@ using SchoolJounal.Model;
 
 namespace SchoolJournal.Data.Repositories
 {
-    interface ISchoolClassRepository
+    public interface ISchoolClassRepository
     {
         void AddSchoolClass(SchoolClass schoolClass);
         List<SchoolClass> GetSchoolClassList();
