@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -199,6 +200,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\Repositories\ISubjectRepository.cs" />
+    <Compile Include="Data\Repositories\SubjectRepository.cs" />
     <Compile Include="Domain\ApplicationUser.cs" />
     <Compile Include="Domain\Mark.cs" />
     <Compile Include="Domain\SchoolClass.cs" />
