@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace SchoolJounal.Model
 {
     public class Teacher
+	//Ihor
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
