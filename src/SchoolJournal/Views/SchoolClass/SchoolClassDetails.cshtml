@@ -1,0 +1,33 @@
+﻿@using SchoolJounal.Model
+@Model List<SchoolClassViewModel>;
+@{
+
+    ViewBag.Title = "SchoolClassDetails";
+}
+
+<h2>The School Class list</h2>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Class name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schoolClass in Model)
+            {
+                <tr>
+                    <th>@schoolClass.SchoolClassNumber</th>
+                    <th>@schoolClass.SchoolClassName</th>
+                    <th>@Html.ActionLink("Details", "SchoolClassDetails", new { SchoolClassNumber = schoolClass.SchoolClassNumber })</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Create new Car", "Create", "Car", new { @class = "btn-default" }, null)
+</div>
+
+
+
+    
