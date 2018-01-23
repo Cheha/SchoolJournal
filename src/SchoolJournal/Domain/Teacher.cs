@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolJounal.Model
+namespace SchoolJournal.Domain
 {
     public class Teacher
-	//Ihor
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
