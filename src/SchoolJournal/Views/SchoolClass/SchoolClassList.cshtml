@@ -2,7 +2,7 @@
 @Model List<SchoolClassViewModel>;
 @{
 
-    ViewBag.Title = "SchoolClassDetails";
+    ViewBag.Title = "School Class List";
 }
 
 <h2>The School Class list</h2>
@@ -20,7 +20,7 @@
                 <tr>
                     <th>@schoolClass.SchoolClassNumber</th>
                     <th>@schoolClass.SchoolClassName</th>
-                    <th>@Html.ActionLink("Details", "SchoolClassDetails", new { SchoolClassNumber = schoolClass.SchoolClassNumber })</th>
+                    <th>@Html.ActionLink("Details", "SchoolClassList", new { SchoolClassNumber = schoolClass.SchoolClassNumber })</th>
                 </tr>
             }
         </tbody>
