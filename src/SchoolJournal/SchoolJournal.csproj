@@ -229,6 +229,8 @@
     <Compile Include="Models\TeacherBuildModel.cs" />
     <Compile Include="Models\TeacherViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HashidService.cs" />
+    <Compile Include="Services\IHashidsService.cs" />
     <Compile Include="Services\ITeacherService.cs" />
     <Compile Include="Services\TeacherService.cs" />
     <Compile Include="Startup.cs" />
@@ -293,10 +295,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Teacher\ShowTeacher.cshtml" />
+    <Content Include="Views\Teacher\ShowAllTeachers.cshtml" />
+    <Content Include="Views\Teacher\ShowTeachersClasses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

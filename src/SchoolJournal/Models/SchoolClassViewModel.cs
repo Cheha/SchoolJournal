@@ -7,7 +7,7 @@ namespace SchoolJournal.Models
 {
     public class SchoolClassViewModel
     {
-        public string ClassId { get; set; }
-        public string ClassName { get; set; }
+        public string SchoolClassNumber { get; set; }
+        public string SchoolClassName { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace SchoolJournal.Data.Repository
         TeacherSchoolClass AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher);
         TeacherSubject AddNewTeacherSubject(Subject newSubject, Teacher teacher);
 
-        List<TeacherSubject> GetListOfTeachersSubjects(Teacher teacher);
-        List<TeacherSchoolClass> GetListOfTeacherClasses(Teacher teacher);
+        List<TeacherSubject> GetListOfTeachersSubjects(int teacherId);
+        List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId);
     }
 }

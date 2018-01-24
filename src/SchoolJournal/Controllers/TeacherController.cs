@@ -14,15 +14,26 @@ namespace SchoolJournal.Controllers
         {
             _teacherService = new TeacherService();
         }
-        // GET: Teacher   Teacher GetTeacher(int Id);
-        //1   List<TeacherSchoolClass> GetListOfTeacherClasses(Teacher teacher);
-        //2
 
-        
-        public ActionResult ShowTeacher(string id)
+
+        [HttpGet]
+        public ActionResult ShowAllTeachers()
         {
-            return View();
+            return View(_teacherService.GetAllTeachers());
         }
+
+        [HttpGet]
+        public ActionResult ShowTeacher()//(string id)
+        {
+            return View();// _teacherService.GetTeacher(id));
+        }
+
+        [HttpGet]
+        public ActionResult ShowTeachersClasses(string teacherId)
+        {
+            return PartialView(_teacherService.GetTeachersSchoolClasses(teacherId)); 
+        }
+
 
     }
 }

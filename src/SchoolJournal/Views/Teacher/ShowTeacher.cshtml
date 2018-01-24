@@ -1,0 +1,25 @@
+﻿@using SchoolJournal.Models;
+@model TeacherViewModel
+@{
+    ViewBag.Title = "A Teacher page";
+}
+
+<h2>This is teacher</h2>
+@{ //@Model.TeacherLastName @Model.TeacherFirstName
+}
+
+<h3>Отобразить список классов в которых приподаёт учитель</h3>
+@{ 
+    // ИДЕЯ - СРАЗУ ЗДЕСЬ ОТОБРАЖАТЬ, через PartialView, СПИСОК КЛАССОВ В КОТОРЫХ ПРИПОДАЁТ ДАННЫЙ УЧИТЕЛЬ 
+    // (НО надо передать его Number - ID)
+}
+@Html.ActionLink("Классы", "ShowTeachersClasses")@{//,new { teacherId = Model.TeacherId },new { @class = "btn-default" })
+}
+
+<h3>Вернутся к списку Учителей</h3>
+@Html.ActionLink("Список Учителей", "ShowAllTeachers", new { @class = "btn-default" })
+
+
+@{
+   // @Html.ActionLink("Create new Car", "Create", "Car", new { @class = "btn-default" }, null)
+}
