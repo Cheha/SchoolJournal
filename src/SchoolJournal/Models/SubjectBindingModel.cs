@@ -7,5 +7,6 @@ namespace SchoolJournal.Models
 {
     public class SubjectBindingModel
     {
+        public string SubjectName { get; set; }
     }
 }
