@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SchoolJournal.Models;
-<<<<<<< HEAD
 using SchoolJournal.Data.Repository;
-=======
 using SchoolJournal.Data.Repositories;
->>>>>>> 4929d347b74de476c734a677c60cdcf70b2973f8
 
 namespace SchoolJournal.Services
 {
