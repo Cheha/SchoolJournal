@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using SchoolJounal.Model;
 using SchoolJournal.Domain;
 using SchoolJournal.Models;
 using System;
