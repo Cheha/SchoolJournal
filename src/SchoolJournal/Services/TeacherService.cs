@@ -24,21 +24,21 @@ namespace SchoolJournal.Services
         //1 GetTeacher by id
         public TeacherViewModel GetTeacher(string teacherId)
         {
-            var temp = _teacherRepository.GetTeacher(_hashids.Decode(teacherId));
+            var teacher = _teacherRepository.GetTeacher(_hashids.Decode(teacherId));
             return new TeacherViewModel() { TeacherId = teacherId, TeacherFirstName = temp.FirstName, TeacherLastName = temp.LastName };
         }
         //1.1 GetAllTeachers
         public List<TeacherViewModel> GetAllTeachers()
         {
-            var temp = _teacherRepository.GetAllTeachers();
-            return temp.Select(x => new TeacherViewModel() { TeacherId = _hashids.Encode(x.Id), TeacherFirstName = x.FirstName, TeacherLastName = x.LastName }).ToList();
+            var teachers = _teacherRepository.GetAllTeachers();
+            return teachers.Select(x => new TeacherViewModel() { TeacherId = _hashids.Encode(x.Id), TeacherFirstName = x.FirstName, TeacherLastName = x.LastName }).ToList();
         }
         //2  GetListOfTeacherClasses by Teacher id
         public List<SchoolClassViewModel> GetTeachersSchoolClasses(string teacherId)
         {
-            var temp = _teacherRepository.GetListOfTeacherClasses(_hashids.Decode(teacherId));
+            var teacherShoolClasses = _teacherRepository.GetListOfTeacherClasses(_hashids.Decode(teacherId));
 
-            return temp.Select(x => new SchoolClassViewModel()
+            return teacherShoolClasses.Select(x => new SchoolClassViewModel()
             {
                 SchoolClassName = x.SchoolClass.Name,
                 SchoolClassNumber = _hashids.Encode(x.SchoolClass.Id)
