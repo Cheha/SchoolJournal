@@ -9,16 +9,16 @@ namespace SchoolJournal.Controllers
 {
     public class SchoolClassController : Controller
     {
-        private readonly ISchoolClassService _schoolClassController;
+        private readonly ISchoolClassService _schoolClassService;
 
         public SchoolClassController()
         {
-            _schoolClassController = new SchoolClassService();
+            _schoolClassService = new SchoolClassService();
         }
 
         public ActionResult SchoolClassList()
         {
-            var scoolClassModel = _schoolClassController._getAllSchoolClass();
+            var scoolClassModel = _schoolClassService._getAllSchoolClass();
             return View(scoolClassModel);
 
         }
