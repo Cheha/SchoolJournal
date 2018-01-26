@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using SchoolJournal.Data.Repositories;
-using SchoolJounal.Model;
+using SchoolJournal.Domain;
 
-namespace SchoolJournal.Data.Repositories
+namespace SchoolJournal.Data.Repository
 {
     public class SchoolClassRepository : ISchoolClassRepository
     {

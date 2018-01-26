@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using SchoolJournal.Models;
+using SchoolJournal.Data.Repository;
 using SchoolJournal.Data.Repositories;
 
 namespace SchoolJournal.Services
@@ -16,6 +17,11 @@ namespace SchoolJournal.Services
         {
             _schoolClassRepository = new SchoolClassRepository();
             _hashidsService = new HashidService();
+        }
+
+        public List<SchoolClassViewModel> GetAllSchoolClass()
+        {
+            throw new NotImplementedException();
         }
 
         public List<SchoolClassViewModel> _getAllSchoolClass()

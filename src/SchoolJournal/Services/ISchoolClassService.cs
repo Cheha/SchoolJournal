@@ -1,5 +1,5 @@
-﻿using SchoolJournal.Models;
 using System;
+﻿using SchoolJournal.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +9,6 @@ namespace SchoolJournal.Services
 {
     interface ISchoolClassService
     {
-        List<SchoolClassViewModel> _getAllSchoolClass();
-        
+        List<SchoolClassViewModel> GetAllSchoolClass();
     }
 }
