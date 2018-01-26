@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
-using SchoolJounal.Model;
 using SchoolJournal.Domain;
 using SchoolJournal.Models;
 

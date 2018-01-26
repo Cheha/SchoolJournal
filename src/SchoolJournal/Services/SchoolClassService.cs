@@ -19,6 +19,11 @@ namespace SchoolJournal.Services
             _hashidsService = new HashidService();
         }
 
+        public List<SchoolClassViewModel> GetAllSchoolClass()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<SchoolClassViewModel> _getAllSchoolClass()
         {
             var SchoolClassList = _schoolClassRepository.GetSchoolClassList();
