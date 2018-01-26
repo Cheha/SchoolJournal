@@ -9,7 +9,7 @@ namespace SchoolJournal.Services
 {
     interface ISchoolClassService
     {
-        List<SchoolClassViewModel> _getAllSchoolClass();
+        List<SchoolClassViewModel> GetAllSchoolClass();
         
     }
 }

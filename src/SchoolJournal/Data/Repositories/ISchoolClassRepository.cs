@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolJournal.Data;
-using SchoolJounal.Model;
+using SchoolJournal.Domain;
 
 namespace SchoolJournal.Data.Repositories
 {

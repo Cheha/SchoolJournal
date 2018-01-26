@@ -1,0 +1,24 @@
+﻿@using SchoolJournal.Models
+@model List<SchoolClassViewModel>
+
+@{
+                /**/
+
+                ViewBag.Title = "Teacher Classes";
+}
+
+<h2>Список Классов </h2>
+
+<div class="container">
+    <table>
+        <tr>
+            <th>Название класса</th>
+        </tr>
+        @foreach (SchoolClassViewModel sCVM in Model)
+        {
+            <tr>
+                <td>@sCVM.SchoolClassName</td>
+            </tr>
+        }
+    </table>
+</div>
