@@ -22,6 +22,8 @@ namespace SchoolJournal.Data
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
+       //     : base("SchoolClassDB", throwIfV1Schema: false)
+            
         {
         }
 
