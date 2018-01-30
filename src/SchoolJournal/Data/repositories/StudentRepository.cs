@@ -14,14 +14,13 @@ namespace SchoolJournal.Data.repositories
         {
             _context = new ApplicationDbContext();
         }
-        public List<Student> Get()
+        public List<Student> GetAll()
         {
             return _context.Students.ToList();
         }
-        public Student GetOne(int id)
+        public Student Get(int id)
         {
-           List <Student> students = _context.Students.ToList() ;
-            Student student = students.FirstOrDefault(x => x.Id == id);
+            Student student = _context.Students.FirstOrDefault(x => x.Id == id);
             return student;
         }
         public void Add(Student stud)

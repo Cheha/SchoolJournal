@@ -6,13 +6,10 @@ using System.Web;
 
 namespace SchoolJournal.Servises
 {
-    public interface IStudentServise
+    public interface IStudentService
     {
         void AddStudent(Student student);
         List<Student> GetAllStudents();
         Student GetStudent(int id);
-
-
-
     }
 }

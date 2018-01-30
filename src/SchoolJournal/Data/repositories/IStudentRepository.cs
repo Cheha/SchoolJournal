@@ -8,8 +8,8 @@ namespace SchoolJournal.Data.repositories
 {
     public interface IStudentRepository
     {
-        List<Student> Get();
-        Student GetOne(int iD);
+        List<Student> GetAll();
+        Student Get(int id);
         void Add(Student student);
     }
 }

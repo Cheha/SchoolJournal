@@ -7,16 +7,16 @@ using System.Web;
 
 namespace SchoolJournal.Servises
 {
-    public class StudentServise : IStudentServise
+    public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
-        public StudentServise()
+        public StudentService()
         {
             _studentRepository = new StudentRepository();
         }
         public List<Student> GetAllStudents()
         {
-            return  _studentRepository.Get();
+            return  _studentRepository.GetAll();
 
         }
         public void AddStudent(Student student)
@@ -25,7 +25,7 @@ namespace SchoolJournal.Servises
         }
         public Student GetStudent(int id)
         {
-          Student student =  _studentRepository.GetOne(id);
+          Student student =  _studentRepository.Get(id);
             
             return student;
         }
