@@ -77,3 +77,4 @@ _[Ss]cripts
 *.ide-shm
 *.ide
 *.lock
+/.vs
