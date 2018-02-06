@@ -85,3 +85,7 @@ log/*.log
 tmp/
 public/system/images/
 public/system/avatars/
+src/.vs/SchoolJournal/v15/Server/sqlite3/db.lock
+src/.vs/SchoolJournal/v15/Server/sqlite3/storage.ide
+src/.vs/SchoolJournal/v15/Server/sqlite3/storage.ide-wal
+src/.vs/SchoolJournal/v15/Server/sqlite3/storage.ide-shm
