@@ -78,3 +78,10 @@ _[Ss]cripts
 *.ide
 *.lock
 /.vs
+.bundle
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/
+public/system/images/
+public/system/avatars/
