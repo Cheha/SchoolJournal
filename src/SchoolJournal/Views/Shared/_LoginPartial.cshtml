@@ -1,4 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("В начало", "Index", "Home")</li>
+    <li>@Html.ActionLink("Про программу", "About", "Home")</li>
+    <li>@Html.ActionLink("Обратная связь", "Contact", "Home")</li>
+</ul>
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -16,7 +23,6 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Войти", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

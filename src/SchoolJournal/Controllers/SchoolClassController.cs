@@ -18,7 +18,7 @@ namespace SchoolJournal.Controllers
 
         public ActionResult SchoolClassList()
         {
-            var scoolClassModel = _schoolClassService._getAllSchoolClass();
+            var scoolClassModel = _schoolClassService.GetAllSchoolClass();
             return View(scoolClassModel);
 
         }

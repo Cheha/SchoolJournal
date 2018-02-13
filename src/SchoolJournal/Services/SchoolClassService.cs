@@ -18,7 +18,7 @@ namespace SchoolJournal.Services
             _hashidsService = new HashidService();
         }
 
-        public List<SchoolClassViewModel> _getAllSchoolClass()
+        public List<SchoolClassViewModel> GetAllSchoolClass()
         {
             var SchoolClassList = _schoolClassRepository.GetSchoolClassList();
             return SchoolClassList.Select(p => new SchoolClassViewModel
