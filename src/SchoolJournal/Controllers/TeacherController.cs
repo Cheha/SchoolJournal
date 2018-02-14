@@ -1,7 +1,7 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using SchoolJournal.Models;
 using System.Web.Mvc;
 using SchoolJournal.Services;
 
@@ -17,22 +17,46 @@ namespace SchoolJournal.Controllers
 
 
         [HttpGet]
-        public ActionResult ShowAllTeachers()
+        public async Task<ActionResult> ShowAllTeachers()
         {
-            return View(_teacherService.GetAllTeachers());
+            return View(await _teacherService.GetAllTeachers());
         }
 
         [HttpGet]
-        public ActionResult ShowTeacher()//(string id)
+        public async Task<ActionResult> ShowTeacher(string id)
         {
-            return View();// _teacherService.GetTeacher(id));
+            return View(await _teacherService.GetTeacher(id));
         }
 
         [HttpGet]
-        public ActionResult ShowTeachersClasses(string teacherId)
+        public async Task<ActionResult> ShowTeachersClasses(string teacherId)
         {
-            return PartialView(_teacherService.GetTeachersSchoolClasses(teacherId));
+            return PartialView(await _teacherService.GetTeachersSchoolClasses(teacherId));
         }
+
+        //[HttpGet]
+        //[Authorize(Roles = "admin")]
+        //public ActionResult AddTeacher()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //[Authorize(Roles = "admin")]
+        //public async Task<ActionResult> AddTeacher(TeacherBuildModel model)
+        //{
+
+        //}
+
+        //[HttpGet]
+        //public ActionResult EditTeacher(string id)
+        //{
+        //    return View(_teacherService.GetTeacher(id));
+        //}
+        //[HttpPost]
+        //public async Task<ActionResult> EditTeacher(TeacherViewModel model)
+        //{
+
+        //}
 
 
     }

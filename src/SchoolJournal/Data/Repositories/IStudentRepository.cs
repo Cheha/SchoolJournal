@@ -1,10 +1,8 @@
-﻿using SchoolJounal.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using SchoolJournal.Domain;
 
-namespace SchoolJournal.Data.repositories
+
+namespace SchoolJournal.Data.Repositories
 {
     public interface IStudentRepository
     {

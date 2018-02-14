@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SchoolJounal.Model;
+﻿using System.Collections.Generic;
+using SchoolJournal.Domain;
+
+
 namespace SchoolJournal.Data.Repositories
 {
     public interface ISubjectRepository

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SchoolJournal.Models;
-namespace SchoolJournal.Servises
+
+namespace SchoolJournal.Services
 {
     public interface ISubjectService
     {

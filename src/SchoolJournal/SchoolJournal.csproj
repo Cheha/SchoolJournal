@@ -214,7 +214,7 @@
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Data\Repositories\ISubjectRepository.cs" />
     <Compile Include="Data\Repositories\SubjectRepository.cs" />
-    <Compile Include="Controllers\SttudentController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Data\repositories\IStudentRepository.cs" />
     <Compile Include="Data\repositories\StudentRepository.cs" />
     <Compile Include="Controllers\SchoolClassController.cs" />
@@ -245,14 +245,14 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SubjectBindingModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
-    <Compile Include="Servises\ISubjectService.cs" />
-    <Compile Include="Servises\SubjectService.cs" />
+    <Compile Include="Services\ISubjectService.cs" />
+    <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Models\SchoolClassViewModel.cs" />
     <Compile Include="Models\TeacherBuildModel.cs" />
     <Compile Include="Models\TeacherViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servises\IStudentServise.cs" />
-    <Compile Include="Servises\StudentServise.cs" />
+    <Compile Include="Services\IStudentServise.cs" />
+    <Compile Include="Services\StudentServise.cs" />
     <Compile Include="Services\HashidService.cs" />
     <Compile Include="Services\IHashidsService.cs" />
     <Compile Include="Services\ISchoolClassService.cs" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using SchoolJournal.Data.Repository;
 using SchoolJournal.Models;
 using HashidsNet;
@@ -22,19 +22,19 @@ namespace SchoolJournal.Services
 
 
         //1 GetTeacher by id
-        public TeacherViewModel GetTeacher(string teacherId)
+        public async Task<TeacherViewModel> GetTeacher(string teacherId)
         {
             var teacher = _teacherRepository.GetTeacher(_hashids.Decode(teacherId));
             return new TeacherViewModel() { TeacherId = teacherId, TeacherFirstName = teacher.FirstName, TeacherLastName = teacher.LastName };
         }
         //1.1 GetAllTeachers
-        public List<TeacherViewModel> GetAllTeachers()
+        public async Task<List<TeacherViewModel>> GetAllTeachers()
         {
             var teachers = _teacherRepository.GetAllTeachers();
             return teachers.Select(x => new TeacherViewModel() { TeacherId = _hashids.Encode(x.Id), TeacherFirstName = x.FirstName, TeacherLastName = x.LastName }).ToList();
         }
         //2  GetListOfTeacherClasses by Teacher id
-        public List<SchoolClassViewModel> GetTeachersSchoolClasses(string teacherId)
+        public async Task<List<SchoolClassViewModel>> GetTeachersSchoolClasses(string teacherId)
         {
             var teacherShoolClasses = _teacherRepository.GetListOfTeacherClasses(_hashids.Decode(teacherId));
 

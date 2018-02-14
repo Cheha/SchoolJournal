@@ -1,15 +1,13 @@
-﻿using SchoolJounal.Model;
-using SchoolJournal.Data.repositories;
-using System;
+﻿using SchoolJournal.Data.Repositories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using SchoolJournal.Domain;
 
-namespace SchoolJournal.Servises
+namespace SchoolJournal.Services
 {
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+
         public StudentService()
         {
             _studentRepository = new StudentRepository();

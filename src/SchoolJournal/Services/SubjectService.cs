@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using SchoolJournal.Data.Repositories;
-using SchoolJounal.Model;
+using SchoolJournal.Domain;
 using SchoolJournal.Models;
 
-namespace SchoolJournal.Servises
+namespace SchoolJournal.Services
 {
     public class SubjectService : ISubjectService
     {
