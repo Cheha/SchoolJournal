@@ -14,7 +14,7 @@ namespace SchoolJournal.Controllers
         {
             _teacherService = new TeacherService();
         }
-
+        
 
         [HttpGet]
         public async Task<ActionResult> ShowAllTeachers()
@@ -34,29 +34,54 @@ namespace SchoolJournal.Controllers
             return PartialView(await _teacherService.GetTeachersSchoolClasses(teacherId));
         }
 
-        //[HttpGet]
-        //[Authorize(Roles = "admin")]
-        //public ActionResult AddTeacher()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //[Authorize(Roles = "admin")]
-        //public async Task<ActionResult> AddTeacher(TeacherBuildModel model)
-        //{
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public ActionResult AddTeacher()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> AddTeacher(TeacherBuildModel model)
+        {
+            if (ModelState.IsValid && model !=null)
+            {
+                bool result = await _teacherService.AddTeacher(model);
+                if (result)
+                {
+                    return RedirectToAction("ShowAllTeachers");
+                }
 
-        //}
+                else
+                {
+                    ViewBag.Message("Такой учитель уже есть в Базе");
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
 
-        //[HttpGet]
-        //public ActionResult EditTeacher(string id)
-        //{
-        //    return View(_teacherService.GetTeacher(id));
-        //}
-        //[HttpPost]
-        //public async Task<ActionResult> EditTeacher(TeacherViewModel model)
-        //{
-
-        //}
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public ActionResult UpdateTeacher(string id)
+        {
+            return View(_teacherService.GetTeacher(id));
+        }
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> UpdateTeacher(TeacherViewModel model)
+        {
+            await _teacherService.UpdateTeacher(model);
+            return View("ShowAllTeachers");
+        }
+        
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<ActionResult> DeleteTeacher(string  teacherId)
+        {
+            await _teacherService.DeleteTeacher(teacherId);
+            return View("ShowAllTeachers");
+        }
 
 
     }

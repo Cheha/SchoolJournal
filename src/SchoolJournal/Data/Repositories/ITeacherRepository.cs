@@ -12,10 +12,12 @@ namespace SchoolJournal.Data.Repository
     {
         Teacher GetTeacher(int Id);
         List<Teacher> GetAllTeachers();
-        Teacher CreateTeacher(Teacher newTeacher);
+        void CreateTeacher(Teacher newTeacher);
+        void DeleteTeacher(int id);
+        void UpdateTeacher(Teacher model);
 
-        TeacherSchoolClass AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher);
-        TeacherSubject AddNewTeacherSubject(Subject newSubject, Teacher teacher);
+        void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher);
+        void AddNewTeacherSubject(Subject newSubject, Teacher teacher);
 
         List<TeacherSubject> GetListOfTeachersSubjects(int teacherId);
         List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId);

@@ -11,5 +11,7 @@ namespace SchoolJournal.Domain
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
+        //public int SchoolClassId { get; set; }
+        //public SchoolClass SchoolClass { get; set; }
     }
 }

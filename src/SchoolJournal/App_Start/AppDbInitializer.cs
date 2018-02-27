@@ -11,20 +11,21 @@ namespace SchoolJournal
         protected override void Seed(ApplicationDbContext context)
         {
             AddDefaultRolesAndUser(context);
-
             base.Seed(context);
         }
 
         private void AddDefaultRolesAndUser(ApplicationDbContext context)
         {
-            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser> (context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             var adminRole = new IdentityRole("admin");
             var teacherRole = new IdentityRole("teacher");
+            var classteacherRole = new IdentityRole("classteacher");
 
             roleManager.Create(adminRole);
             roleManager.Create(teacherRole);
+            roleManager.Create(classteacherRole);
 
             var userAdmin = new ApplicationUser
             {
@@ -39,7 +40,8 @@ namespace SchoolJournal
             if (result.Succeeded)
             {
                 userManager.AddToRole(userAdmin.Id, adminRole.Name);
-                userManager.AddToRole(userAdmin.Id, teacherRole.Name);
+                //userManager.AddToRole(userAdmin.Id, teacherRole.Name);
+
             }
         }
     }
