@@ -14,7 +14,6 @@ namespace SchoolJournal
         protected void Application_Start()
         {
             Database.SetInitializer(new AppDbInitializer());
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

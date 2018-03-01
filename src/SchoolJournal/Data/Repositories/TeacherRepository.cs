@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Data.Entity;
 using SchoolJournal.Data.Repositories;
 using SchoolJournal.Domain;
+
+//Класний керівник має доступ до 
+//всіх оцінок і предметів свого класу.
+// (1-V) Тобто треба добавити ще одну роль - глянеш, як Саша зробив.
+// (2) І відповідно в класі шкільного класу треба зробити foreign key на вчителя, який буде класним керівником.
 
 namespace SchoolJournal.Data.Repository
 {
@@ -28,21 +33,47 @@ namespace SchoolJournal.Data.Repository
         }
 
         //Create teacher
-        public Teacher CreateTeacher(Teacher newTeacher)
+        public void CreateTeacher(Teacher newTeacher)
         {
-            return _context.Teachers.Add(newTeacher);
+            _context.Teachers.Add(newTeacher);
+            _context.SaveChanges();
         }
 
-        //Add class for teacher
-        public TeacherSchoolClass AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher)
+        //Delete teacher
+        public void DeleteTeacher(int id)
         {
-            return _context.TeacherSchoolClasses.Add(new TeacherSchoolClass() { Teacher = thisTeacher, SchoolClass = newSchoolClass });
+            _context.Teachers.Remove(_context.Teachers.Where(x => x.Id == id).Single());
+            _context.SaveChanges();
+        }
+
+        //Update teacher
+        public void UpdateTeacher(Teacher model)  // НЕт нужды т.к. context один и тот же
+        {
+            _context.Teachers.Attach(model);
+            _context.Entry(model).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        //public void UpdateTeacher(Teacher model) // Лишний запрос в БД.
+        //{
+        //    Teacher temp = _context.Teachers.Where(x => x.Id == model.Id).Single();
+        //    temp.FirstName = model.FirstName;
+        //    temp.LastName = model.LastName;
+        //    _context.SaveChanges();
+        //}
+
+        //Add class for teacher
+        public void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher)
+        {
+            _context.TeacherSchoolClasses.Add(new TeacherSchoolClass() { Teacher = thisTeacher, SchoolClass = newSchoolClass });
+            _context.SaveChanges();
         }
 
         //Add subjects for teacher
-        public TeacherSubject AddNewTeacherSubject(Subject newSubject, Teacher teacher)
+        public void AddNewTeacherSubject(Subject newSubject, Teacher teacher)
         {
-            return _context.TeacherSubjects.Add(new TeacherSubject() { Teacher = teacher, Subject = newSubject });
+           _context.TeacherSubjects.Add(new TeacherSubject() { Teacher = teacher, Subject = newSubject });
+            _context.SaveChanges();
         }
 
         //Get list of teachers subjects

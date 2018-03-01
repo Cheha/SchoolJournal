@@ -214,7 +214,7 @@
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Data\Repositories\ISubjectRepository.cs" />
     <Compile Include="Data\Repositories\SubjectRepository.cs" />
-    <Compile Include="Controllers\SttudentController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Data\repositories\IStudentRepository.cs" />
     <Compile Include="Data\repositories\StudentRepository.cs" />
     <Compile Include="Controllers\SchoolClassController.cs" />
@@ -240,19 +240,23 @@
     <Compile Include="Migrations\201712261830349_Initial.Designer.cs">
       <DependentUpon>201712261830349_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802201934032_Stuff.cs" />
+    <Compile Include="Migrations\201802201934032_Stuff.Designer.cs">
+      <DependentUpon>201802201934032_Stuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SubjectBindingModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
-    <Compile Include="Servises\ISubjectService.cs" />
-    <Compile Include="Servises\SubjectService.cs" />
+    <Compile Include="Services\ISubjectService.cs" />
+    <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Models\SchoolClassViewModel.cs" />
     <Compile Include="Models\TeacherBuildModel.cs" />
     <Compile Include="Models\TeacherViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servises\IStudentServise.cs" />
-    <Compile Include="Servises\StudentServise.cs" />
+    <Compile Include="Services\IStudentServise.cs" />
+    <Compile Include="Services\StudentServise.cs" />
     <Compile Include="Services\HashidService.cs" />
     <Compile Include="Services\IHashidsService.cs" />
     <Compile Include="Services\ISchoolClassService.cs" />
@@ -346,6 +350,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712261830349_Initial.resx">
       <DependentUpon>201712261830349_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201934032_Stuff.resx">
+      <DependentUpon>201802201934032_Stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

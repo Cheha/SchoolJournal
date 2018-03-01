@@ -1,8 +1,4 @@
-﻿using SchoolJournal.Servises;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using SchoolJournal.Services;
 using System.Web.Mvc;
 
 namespace SchoolJournal.Controllers

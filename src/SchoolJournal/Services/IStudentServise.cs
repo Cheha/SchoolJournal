@@ -1,10 +1,8 @@
-﻿using SchoolJounal.Model;
-using System;
+﻿using SchoolJournal.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using SchoolJournal.Domain;
 
-namespace SchoolJournal.Servises
+namespace SchoolJournal.Services
 {
     public interface IStudentService
     {

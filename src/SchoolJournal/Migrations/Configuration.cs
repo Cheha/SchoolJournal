@@ -14,6 +14,9 @@ namespace SchoolJournal.Migrations
 
         protected override void Seed(SchoolJournal.Data.ApplicationDbContext context)
         {
+            // var initializer = new AppDbInitializer();
+            // initializer(context);
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
