@@ -18,7 +18,6 @@ namespace SchoolJournal.Domain
             return userIdentity;
         }
 
-        public int TeacherId { get; set; }
         public Teacher Teacher { get; set; }
     }
 }

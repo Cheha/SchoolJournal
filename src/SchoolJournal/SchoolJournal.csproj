@@ -245,6 +245,10 @@
     <Compile Include="Migrations\201802201934032_Stuff.Designer.cs">
       <DependentUpon>201802201934032_Stuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803031956307_TeacherToAppUserRelation.cs" />
+    <Compile Include="Migrations\201803031956307_TeacherToAppUserRelation.Designer.cs">
+      <DependentUpon>201803031956307_TeacherToAppUserRelation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802201934032_Stuff.resx">
       <DependentUpon>201802201934032_Stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803031956307_TeacherToAppUserRelation.resx">
+      <DependentUpon>201803031956307_TeacherToAppUserRelation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
