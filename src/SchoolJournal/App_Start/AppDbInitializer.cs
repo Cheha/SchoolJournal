@@ -46,21 +46,15 @@ namespace SchoolJournal
             }
 
             // Teacher
-            var teacherRepository = new TeacherRepository();
-
-            var teacher = new Teacher
-            {
-                FirstName = "Ucha",
-                LastName = "Uchilkina"
-            };
-
-            teacherRepository.CreateTeacher(teacher);
-
             var userTeacher = new ApplicationUser
             {
                 Email = "teacher@gmail.com",
                 UserName = "teacher@gmail.com",
-                Teacher = teacher
+                Teacher = new Teacher
+                {
+                    FirstName = "Ucha",
+                    LastName = "Uchilkina"
+                }
             };
 
             string passwordTeacher = "123456";
