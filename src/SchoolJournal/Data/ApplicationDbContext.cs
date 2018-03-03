@@ -31,14 +31,5 @@ namespace SchoolJournal.Data
         {
             return new ApplicationDbContext();
         }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-
-        //    modelBuilder.Entity<ApplicationUser>()
-        //        .HasOptional(u => u.Teacher)
-        //        .WithRequired(t => t.User);
-        //}
     }
 }
