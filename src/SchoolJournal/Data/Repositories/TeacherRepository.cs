@@ -21,7 +21,7 @@ namespace SchoolJournal.Data.Repository
         }
 
         //Get Teacher
-        public Teacher GetTeacher(string Id)
+        public Teacher GetTeacher(int Id)
         {
             return _context.Teachers.Find(Id);
         }
@@ -40,7 +40,7 @@ namespace SchoolJournal.Data.Repository
         }
 
         //Delete teacher
-        public void DeleteTeacher(string id)
+        public void DeleteTeacher(int id)
         {
             _context.Teachers.Remove(_context.Teachers.Where(x => x.Id == id).Single());
             _context.SaveChanges();
@@ -77,13 +77,13 @@ namespace SchoolJournal.Data.Repository
         }
 
         //Get list of teachers subjects
-        public List<TeacherSubject> GetListOfTeachersSubjects(string teacherId)
+        public List<TeacherSubject> GetListOfTeachersSubjects(int teacherId)
         {
             return _context.TeacherSubjects.Include("Subject").Where(x => x.TeacherId == teacherId).ToList();
         }
 
         //Get list of teachers classes
-        public List<TeacherSchoolClass> GetListOfTeacherClasses(string teacherId)
+        public List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId)
         {
             return _context.TeacherSchoolClasses.Include("SchoolClass").Where(x => x.TeacherId == teacherId).ToList();
         }

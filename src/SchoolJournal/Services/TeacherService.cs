@@ -25,19 +25,19 @@ namespace SchoolJournal.Services
         //1 GetTeacher by id
         public async Task<TeacherViewModel> GetTeacher(string teacherId)
         {
-            var teacher = _teacherRepository.GetTeacher(teacherId);
+            var teacher = _teacherRepository.GetTeacher(_hashids.Decode(teacherId));
             return new TeacherViewModel() { TeacherId = teacherId, TeacherFirstName = teacher.FirstName, TeacherLastName = teacher.LastName };
         }
         //1.1 GetAllTeachers
         public async Task<List<TeacherViewModel>> GetAllTeachers()
         {
             var teachers = _teacherRepository.GetAllTeachers();
-            return teachers.Select(x => new TeacherViewModel() { TeacherId = x.Id, TeacherFirstName = x.FirstName, TeacherLastName = x.LastName }).ToList();
+            return teachers.Select(x => new TeacherViewModel() { TeacherId = _hashids.Encode(x.Id), TeacherFirstName = x.FirstName, TeacherLastName = x.LastName }).ToList();
         }
         //2  GetListOfTeacherClasses by Teacher id
         public async Task<List<SchoolClassViewModel>> GetTeachersSchoolClasses(string teacherId)
         {
-            var teacherShoolClasses = _teacherRepository.GetListOfTeacherClasses(teacherId);
+            var teacherShoolClasses = _teacherRepository.GetListOfTeacherClasses(_hashids.Decode(teacherId));
 
             return teacherShoolClasses.Select(x => new SchoolClassViewModel()
             {
@@ -75,9 +75,9 @@ namespace SchoolJournal.Services
         //5 Delete Teacher via his id
         public async Task<bool> DeleteTeacher(string teacherId)
         {
-            _teacherRepository.DeleteTeacher(teacherId);
+            _teacherRepository.DeleteTeacher(_hashids.Decode(teacherId));
 
-            if (_teacherRepository.GetTeacher(teacherId) == null)
+            if (_teacherRepository.GetTeacher(_hashids.Decode(teacherId)) == null)
             {
                 return true;
             }
@@ -90,7 +90,7 @@ namespace SchoolJournal.Services
             _teacherRepository.UpdateTeacher(new Teacher {
                                                         FirstName = model.TeacherFirstName,
                                                         LastName = model.TeacherLastName,
-                                                        Id = model.TeacherId
+                                                        Id = _hashids.Decode(model.TeacherId)
                                             });
         }
     }

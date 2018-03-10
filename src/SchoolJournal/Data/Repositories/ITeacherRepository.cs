@@ -10,17 +10,17 @@ namespace SchoolJournal.Data.Repository
 {
     interface ITeacherRepository
     {
-        Teacher GetTeacher(string Id);
+        Teacher GetTeacher(int Id);
         List<Teacher> GetAllTeachers();
         void CreateTeacher(Teacher newTeacher);
-        void DeleteTeacher(string id);
+        void DeleteTeacher(int id);
         void UpdateTeacher(Teacher model);
 
         void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher);
         void AddNewTeacherSubject(Subject newSubject, Teacher teacher);
 
-        List<TeacherSubject> GetListOfTeachersSubjects(string teacherId);
-        List<TeacherSchoolClass> GetListOfTeacherClasses(string teacherId);
+        List<TeacherSubject> GetListOfTeachersSubjects(int teacherId);
+        List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId);
     }
 }
 
