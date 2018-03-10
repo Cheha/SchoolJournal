@@ -17,8 +17,5 @@ namespace SchoolJournal.Domain
             // Add custom user claims here
             return userIdentity;
         }
-
-        public int TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
     }
 }

@@ -64,7 +64,7 @@ namespace SchoolJournal
             {
                 FirstName = "Ucha",
                 LastName = "Uchilkina",
-                Id = userTeacher.Id
+                UserId = userTeacher.Id
             };
             context.Teachers.Add(teacher);
 
