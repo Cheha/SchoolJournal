@@ -249,6 +249,10 @@
     <Compile Include="Migrations\201803101720514_LinkApplicationUserToTeacher.Designer.cs">
       <DependentUpon>201803101720514_LinkApplicationUserToTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803130441155_AddDateToMarks.cs" />
+    <Compile Include="Migrations\201803130441155_AddDateToMarks.Designer.cs">
+      <DependentUpon>201803130441155_AddDateToMarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803101720514_LinkApplicationUserToTeacher.resx">
       <DependentUpon>201803101720514_LinkApplicationUserToTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130441155_AddDateToMarks.resx">
+      <DependentUpon>201803130441155_AddDateToMarks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
