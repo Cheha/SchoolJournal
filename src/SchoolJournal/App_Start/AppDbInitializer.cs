@@ -2,6 +2,8 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using SchoolJournal.Data;
 using SchoolJournal.Domain;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace SchoolJournal
@@ -124,6 +126,39 @@ namespace SchoolJournal
                     Subject = geom
                 }
             );
+
+            context.SaveChanges();
+
+            // Marks
+            var marks = new List<Mark>
+            {
+                new Mark{
+                    Date = DateTime.Today,
+                    StudentId = st1.Id,
+                    SubjectId = math.Id,
+                    Value = 10
+                },
+                new Mark{
+                    Date = DateTime.Today.AddDays(-1),
+                    StudentId = st1.Id,
+                    SubjectId = math.Id,
+                    Value = 11
+                },
+                new Mark{
+                    Date = DateTime.Today.AddDays(-5),
+                    StudentId = st1.Id,
+                    SubjectId = math.Id,
+                    Value = 3
+                },
+                new Mark{
+                    Date = DateTime.Today,
+                    StudentId = st2.Id,
+                    SubjectId = math.Id,
+                    Value = 9
+                }
+            };
+
+            context.Marks.AddRange(marks);
 
             context.SaveChanges();
         }
