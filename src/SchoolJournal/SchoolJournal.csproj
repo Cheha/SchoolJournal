@@ -214,6 +214,7 @@
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherProfileController.cs" />
     <Compile Include="Data\Repositories\ISubjectRepository.cs" />
+    <Compile Include="Data\Repositories\MarkRepository.cs" />
     <Compile Include="Data\Repositories\SubjectRepository.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Data\repositories\IStudentRepository.cs" />
@@ -256,6 +257,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MarkViewModel.cs" />
     <Compile Include="Models\SubjectBindingModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
     <Compile Include="Services\ISubjectService.cs" />
@@ -271,6 +273,7 @@
     <Compile Include="Services\ISchoolClassService.cs" />
     <Compile Include="Services\ITeacherService.cs" />
     <Compile Include="Services\SchoolClassService.cs" />
+    <Compile Include="Services\MarkService.cs" />
     <Compile Include="Services\TeacherService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
