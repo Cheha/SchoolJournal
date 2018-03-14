@@ -93,5 +93,17 @@ namespace SchoolJournal.Services
                                                         Id = _hashids.Decode(model.TeacherId)
                                             });
         }
+
+        public async Task<TeacherViewModel> GetTeacherByUserId(string userId)
+        {
+            var teacher = await _teacherRepository.GetTeacherByUserId(userId);
+
+            return new TeacherViewModel
+            {
+                TeacherId = _hashids.Encode(teacher.Id),
+                TeacherFirstName = teacher.FirstName,
+                TeacherLastName = teacher.LastName
+            };
+        }
     }
 }
