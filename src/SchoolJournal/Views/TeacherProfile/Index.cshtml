@@ -1,7 +1,94 @@
-﻿
+﻿@model SchoolJournal.Models.TeacherProfileViewModel
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Teacher profile - " + Model.Teacher.TeacherFullName;
 }
 
-<h2>Index</h2>
+@section styles{
+    <link href="~/Content/TeacherProfile.css" rel="stylesheet" />
+}
 
+<div class="profile-box">
+    <aside class="sm-side">
+        <div class="teacher-head">
+            <a class="teacher-avatar" href="#">
+                <img width="64" hieght="60" src="~/Content/Images/DefaultAvatar.png">
+            </a>
+            <div class="teacher-name">
+                <h5><a href="#">@Model.Teacher.TeacherFullName</a></h5>
+                <span><a href="#">email@gmail.com</a></span>
+            </div>
+            <a class="mail-dropdown pull-right" href="javascript:;">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+        <div class="teacher-body">
+            @using (Ajax.BeginForm(new AjaxOptions { Url = Url.Action("TableOfMarks"), UpdateTargetId = "tableOfMarks" }))
+            {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.Label("Date from", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div  class="col-md-10">
+                        @Html.TextBox("DateFrom", null, new { type = "date", @class="form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Date till", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBox("DateTill", null, new { type = "date", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SchoolClasses, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("SchoolClassId", new SelectList(Model.SchoolClasses, "SchoolClassNumber", "SchoolClassName"), string.Empty, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Subject", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("SubjectId", new SelectList(string.Empty, "Id", "SubjectName"), htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <input type="submit" value="Показать" class="btn btn-default" />
+            </div>
+            }
+        </div>
+    </aside>
+    <aside class="lg-side">
+        <div class="marks-head">
+            <h3>Оценки</h3>
+        </div>
+        <div class="marks-body">
+            <div id="tableOfMarks"></div>
+        </div>
+    </aside>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#SchoolClassId").change(function (e) {
+                e.preventDefault();
+                $("#SubjectId").empty();
+                $.ajax({
+                    url: '@Url.Action("SchoolClassSubjects")',
+                    type: 'GET',
+                    data: { SchoolClassNumber: $("#SchoolClassId").val(), TeacherId: '@Model.Teacher.TeacherId' },
+                    success: function (subjects) {
+                        $("#SubjectId").append('<option value=""></option>');
+                        $.each(subjects, function (i, subject) {
+                            $("#SubjectId").append('<option value="' + subject.SubjectNumber + '">' + subject.SubjectName + '</option>');
+                        });
+                    },
+                });
+            })
+        })
+    </script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+<br />
+<br />
