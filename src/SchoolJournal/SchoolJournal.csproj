@@ -261,6 +261,9 @@
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\SubjectBindingModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
+    <Compile Include="Models\MarkParamsViewModel.cs" />
+    <Compile Include="Models\TableOfMarksViewModel.cs" />
+    <Compile Include="Models\TeacherProfileViewModel.cs" />
     <Compile Include="Services\ISubjectService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Models\SchoolClassViewModel.cs" />
