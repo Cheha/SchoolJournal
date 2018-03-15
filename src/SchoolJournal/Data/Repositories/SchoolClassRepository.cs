@@ -19,6 +19,7 @@ namespace SchoolJournal.Data.Repositories
         public void AddSchoolClass(SchoolClass schoolClass)
         {
             _context.SchoolClasses.Add(schoolClass);
+            _context.SaveChanges();
         }
 
         public List<SchoolClass> GetSchoolClassList()

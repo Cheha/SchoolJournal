@@ -212,7 +212,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TeacherProfileController.cs" />
     <Compile Include="Data\Repositories\ISubjectRepository.cs" />
+    <Compile Include="Data\Repositories\MarkRepository.cs" />
     <Compile Include="Data\Repositories\SubjectRepository.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Data\repositories\IStudentRepository.cs" />
@@ -244,11 +246,24 @@
     <Compile Include="Migrations\201802201934032_Stuff.Designer.cs">
       <DependentUpon>201802201934032_Stuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803101720514_LinkApplicationUserToTeacher.cs" />
+    <Compile Include="Migrations\201803101720514_LinkApplicationUserToTeacher.Designer.cs">
+      <DependentUpon>201803101720514_LinkApplicationUserToTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803130441155_AddDateToMarks.cs" />
+    <Compile Include="Migrations\201803130441155_AddDateToMarks.Designer.cs">
+      <DependentUpon>201803130441155_AddDateToMarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MarkViewModel.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\SubjectBindingModel.cs" />
     <Compile Include="Models\SubjectViewModel.cs" />
+    <Compile Include="Models\MarkParamsViewModel.cs" />
+    <Compile Include="Models\TableOfMarksViewModel.cs" />
+    <Compile Include="Models\TeacherProfileViewModel.cs" />
     <Compile Include="Services\ISubjectService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <Compile Include="Models\SchoolClassViewModel.cs" />
@@ -262,12 +277,15 @@
     <Compile Include="Services\ISchoolClassService.cs" />
     <Compile Include="Services\ITeacherService.cs" />
     <Compile Include="Services\SchoolClassService.cs" />
+    <Compile Include="Services\MarkService.cs" />
     <Compile Include="Services\TeacherService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\DefaultAvatar.png" />
+    <Content Include="Content\TeacherProfile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -287,6 +305,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -333,6 +353,8 @@
     <Content Include="Views\Teacher\ShowAllTeachers.cshtml" />
     <Content Include="Views\Teacher\ShowTeacher.cshtml" />
     <Content Include="Views\Teacher\ShowTeachersClasses.cshtml" />
+    <Content Include="Views\TeacherProfile\Index.cshtml" />
+    <Content Include="Views\TeacherProfile\TableOfMarks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802201934032_Stuff.resx">
       <DependentUpon>201802201934032_Stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803101720514_LinkApplicationUserToTeacher.resx">
+      <DependentUpon>201803101720514_LinkApplicationUserToTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130441155_AddDateToMarks.resx">
+      <DependentUpon>201803130441155_AddDateToMarks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

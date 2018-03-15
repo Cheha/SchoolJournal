@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.Entity;
 using SchoolJournal.Data.Repositories;
 using SchoolJournal.Domain;
+using System.Threading.Tasks;
 
 //Класний керівник має доступ до 
 //всіх оцінок і предметів свого класу.
@@ -86,6 +87,11 @@ namespace SchoolJournal.Data.Repository
         public List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId)
         {
             return _context.TeacherSchoolClasses.Include("SchoolClass").Where(x => x.TeacherId == teacherId).ToList();
+        }
+
+        public async Task<Teacher> GetTeacherByUserId(string userId)
+        {
+            return await _context.Teachers.FirstOrDefaultAsync(t => t.UserId == userId);
         }
     }
 }

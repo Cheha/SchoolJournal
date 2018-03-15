@@ -1,0 +1,23 @@
+﻿@model SchoolJournal.Models.TableOfMarksViewModel
+
+<table class="table table-marks table-hover">
+    <tr>
+        <th>Ученик / Дата</th>
+        @foreach (var date in Model.Dates)
+        {
+            <th class="text-right">@date.Day</th>
+        }
+    </tr>
+    @foreach (var student in Model.Students)
+    {
+        <tr>
+            <td>@student.StudentFullName</td>
+            @foreach(var date in Model.Dates)
+            {
+                var mark = Model.Marks.FirstOrDefault(m => m.Date == date && m.StudentId == student.StudentId);
+
+                <td class="text-right">@(mark?.Value)</td>
+            }
+        </tr>
+    }
+</table>

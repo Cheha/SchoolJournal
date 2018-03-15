@@ -27,5 +27,28 @@ namespace SchoolJournal.Services
                 SchoolClassNumber = _hashidsService.Encode(p.Id)
             }).ToList();
         }
+
+        public List<StudentViewModel> GetStudents(string schoolClassId)
+        {
+            var students = _schoolClassRepository.GetStudentsList(_hashidsService.Decode(schoolClassId));
+
+            return students.Select(s => new StudentViewModel
+            {
+                StudentId = _hashidsService.Encode(s.Id),
+                StudentFirstName = s.FirstName,
+                StudentLastName = s.LastName,
+                SchoolClassId = _hashidsService.Encode(s.SchoolClassId)
+            }).ToList();
+        }
+
+        public List<SubjectViewModel> GetSubjectsList(string schoolClassId)
+        {
+            var subjects = _schoolClassRepository.GetSubjectsList(_hashidsService.Decode(schoolClassId));
+
+            return subjects.Select(s => new SubjectViewModel {
+                SubjectNumber = _hashidsService.Encode(s.Id),
+                SubjectName = s.Name
+            }).ToList();
+        }
     }
 }
