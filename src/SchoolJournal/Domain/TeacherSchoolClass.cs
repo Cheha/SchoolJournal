@@ -5,14 +5,15 @@ using System.Web;
 
 namespace SchoolJournal.Domain
 {
-    public class TeacherSchoolClass
-    {
-        public int Id { get; set; }
+    //Больше не нужен
+    //public class TeacherSchoolClass
+    //{
+    //    public int Id { get; set; }
 
-        public int TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
+    //    public int TeacherId { get; set; }
+    //    public Teacher Teacher { get; set; }
 
-        public int SchoolClassId { get; set; }
-        public SchoolClass SchoolClass { get; set; }
-    }
+    //    public int SchoolClassId { get; set; }
+    //    public SchoolClass SchoolClass { get; set; }
+    //}
 }

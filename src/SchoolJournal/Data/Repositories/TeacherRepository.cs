@@ -22,15 +22,15 @@ namespace SchoolJournal.Data.Repository
         }
 
         //Get Teacher
-        public Teacher GetTeacher(int Id)
+        public async Task<Teacher> GetTeacher(int Id)
         {
-            return _context.Teachers.Find(Id);
+            return await _context.Teachers.FindAsync(Id);
         }
 
         // GetAllTeachers
-        public List<Teacher> GetAllTeachers()
+        public Task<List<Teacher>> GetAllTeachers()
         {
-            return _context.Teachers.ToList();
+            return _context.Teachers.ToListAsync();
         }
 
         //Create teacher
@@ -63,12 +63,14 @@ namespace SchoolJournal.Data.Repository
         //    _context.SaveChanges();
         //}
 
-        //Add class for teacher
-        public void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher)
-        {
-            _context.TeacherSchoolClasses.Add(new TeacherSchoolClass() { Teacher = thisTeacher, SchoolClass = newSchoolClass });
-            _context.SaveChanges();
-        }
+
+        
+        ////Add class for teacher
+        //public void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher)
+        //{
+        //    _context.TeacherSchoolClasses.Add(new TeacherSchoolClass() { Teacher = thisTeacher, SchoolClass = newSchoolClass });
+        //    _context.SaveChanges();
+        //}
 
         //Add subjects for teacher
         public void AddNewTeacherSubject(Subject newSubject, Teacher teacher)
@@ -83,10 +85,10 @@ namespace SchoolJournal.Data.Repository
             return _context.TeacherSubjects.Include("Subject").Where(x => x.TeacherId == teacherId).ToList();
         }
 
-        //Get list of teachers classes
-        public List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId)
+        //Get list of Teacher classes and Subjects
+        public List<TeacherSchoolClassSubject> GetListOfTeacherSchoolClassSubjects(int teacherId)
         {
-            return _context.TeacherSchoolClasses.Include("SchoolClass").Where(x => x.TeacherId == teacherId).ToList();
+            return _context.TeacherSchoolClassSubjects.Include("Teacher").Include("SchoolClassSubject").Where(x => x.TeacherId == teacherId).ToList();
         }
 
         public async Task<Teacher> GetTeacherByUserId(string userId)

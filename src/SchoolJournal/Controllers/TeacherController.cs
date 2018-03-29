@@ -28,11 +28,11 @@ namespace SchoolJournal.Controllers
             return View(await _teacherService.GetTeacher(id));
         }
 
-        [HttpGet]
-        public async Task<ActionResult> ShowTeachersClasses(string teacherId)
-        {
-            return PartialView(await _teacherService.GetTeachersSchoolClasses(teacherId));
-        }
+        //[HttpGet]
+        //public async Task<ActionResult> ShowTeachersClasses(string teacherId)
+        //{
+        //    return PartialView(await _teacherService.GetTeachersSchoolClasses(teacherId));
+        //}
 
         [HttpGet]
         [Authorize(Roles = "admin")]

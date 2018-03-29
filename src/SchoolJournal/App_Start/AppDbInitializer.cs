@@ -98,10 +98,10 @@ namespace SchoolJournal
             context.Subjects.Add(geom);
 
             // Relations
-            context.TeacherSchoolClasses.Add(new TeacherSchoolClass {
-                Teacher = teacher,
-                SchoolClass = sc5A
-            });
+            //context.TeacherSchoolClasses.Add(new TeacherSchoolClass {
+            //    Teacher = teacher,
+            //    SchoolClass = sc5A
+            //});
 
             context.TeacherSubjects.Add(new TeacherSubject {
                 Teacher = teacher,

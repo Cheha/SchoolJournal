@@ -7,7 +7,7 @@ using SchoolJournal.Models;
 
 namespace SchoolJournal.Services
 {
-    interface ITeacherService
+    public interface ITeacherService
     {
         TeacherViewModel GetTeacher(string teacherId);
         List<TeacherViewModel> GetTeachers();

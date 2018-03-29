@@ -208,12 +208,24 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TeacherBuildModel.cs" />
+    <Compile Include="Areas\Admin\Models\TeacherViewModel.cs" />
+    <Compile Include="Areas\Admin\Services\HashidService.cs" />
+    <Compile Include="Areas\Admin\Services\IHashidService.cs" />
+    <Compile Include="Areas\Admin\Services\ITeacherSchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\ITeacherService.cs" />
+    <Compile Include="Areas\Admin\Services\ISchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\SchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\TeacherSchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\TeacherService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherProfileController.cs" />
     <Compile Include="Data\Repositories\ISubjectRepository.cs" />
+    <Compile Include="Data\Repositories\ITeacherSchoolClassSubjectRepository.cs" />
     <Compile Include="Data\Repositories\MarkRepository.cs" />
     <Compile Include="Data\Repositories\SubjectRepository.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -226,6 +238,7 @@
     <Compile Include="Data\Repositories\ITeacherRepository.cs" />
     <Compile Include="Data\Repositories\SchoolClassRepository.cs" />
     <Compile Include="Data\Repositories\TeacherRepository.cs" />
+    <Compile Include="Data\Repositories\TeacherSchoolClassSubjectRepository.cs" />
     <Compile Include="Domain\ApplicationUser.cs" />
     <Compile Include="Domain\Mark.cs" />
     <Compile Include="Domain\SchoolClass.cs" />
@@ -234,6 +247,7 @@
     <Compile Include="Domain\Subject.cs" />
     <Compile Include="Domain\Teacher.cs" />
     <Compile Include="Domain\TeacherSchoolClass.cs" />
+    <Compile Include="Domain\TeacherSchoolClassSubject.cs" />
     <Compile Include="Domain\TeacherSubject.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -358,7 +372,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Default\" />
   </ItemGroup>
   <ItemGroup>
@@ -397,7 +410,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62831</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
