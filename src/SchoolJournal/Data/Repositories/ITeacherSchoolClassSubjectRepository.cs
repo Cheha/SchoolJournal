@@ -11,5 +11,7 @@ namespace SchoolJournal.Data.Repositories
     {
         Task<List<TeacherSchoolClassSubject>> GetListOfTeacherSchoolClassSubjects(int teacherId);
         Task<Teacher> GetTeacherBySubjectAndSchoolClass(int subjectId, int schoolClassId);
+        Task<int> CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(int teacherId, int schoolClassId, int SubjectId);
+        void AddNewEntry(int teacherId, int schoolClassId, int subjectId);
     }
 }

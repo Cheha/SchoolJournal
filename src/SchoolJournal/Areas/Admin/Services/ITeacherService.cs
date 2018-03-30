@@ -14,7 +14,7 @@ namespace SchoolJournal.Areas.Admin.Services
             //List<SchoolClassViewModel> GetTeachersSchoolClasses(string teacherId);
             Task<bool> IsThisTeacherExists(TeacherBuildModel model);
             Task<bool> AddTeacher(TeacherBuildModel model);
-            Task<bool> DeleteTeacher(string teacherId);
+            bool DeleteTeacher(string teacherId);
             Task UpdateTeacher(TeacherViewModel model);
     }
 }

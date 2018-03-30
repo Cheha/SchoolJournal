@@ -6,7 +6,7 @@ using SchoolJournal.Data.Repositories;
 using SchoolJournal.Domain;
 using System.Threading.Tasks;
 using SchoolJournal.Areas.Admin.Models;
-
+using SchoolJournal.Services;
 
 namespace SchoolJournal.Areas.Admin.Services
 {
@@ -52,7 +52,12 @@ namespace SchoolJournal.Areas.Admin.Services
         //добавить учителю класс-И-предмет
         public async void AddSchoolClassAndSubjectToTeacher(string teacherNumber, string schoolClassNumber, string subjectNumber)
         {
+            int isEntryExists = await _teacherSclClsSubjRepository.CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(_hashidsService.Decode(teacherNumber), _hashidsService.Decode(schoolClassNumber), _hashidsService.Decode(subjectNumber));
+            if (isEntryExists == 0) //such entry between Teacher and SchoolClassSubject doesnt exists
+            {
+                _teacherSclClsSubjRepository.AddNewEntry(_hashidsService.Decode(teacherNumber), _hashidsService.Decode(schoolClassNumber), _hashidsService.Decode(subjectNumber));
 
+            }
         }
         public async void RemoveSchoolClassAndSubjectFromTeacher()
         {
@@ -77,9 +82,17 @@ namespace SchoolJournal.Areas.Admin.Services
         }
         //Checking entry between SchoolClassSubject and Teacher in TeacherSchoolClassSubject table
         //Проверка есть ли запись в таблице SchoolClassSubject-Teacher
-        public int CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(string teacherNumber, string schoolClassNumber, string SubjectNumber)
+        public async Task<int> CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(string teacherNumber, string schoolClassNumber, string SubjectNumber)
         {
-
+            int entryId = await _teacherSclClsSubjRepository.CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(_hashidsService.Decode(teacherNumber), _hashidsService.Decode(schoolClassNumber), _hashidsService.Decode(SubjectNumber));
+            if (entryId != 0)
+            {
+                return entryId;
+            }
+            else
+            {
+                return 0;
+            }
         }
         //3 Check is Teacher exists using TeacherBuildModel
         //public async Task<bool> IsThisTeacherExists(TeacherBuildModel model)

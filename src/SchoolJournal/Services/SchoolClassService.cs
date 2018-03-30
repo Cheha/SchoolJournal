@@ -10,7 +10,7 @@ namespace SchoolJournal.Services
     public class SchoolClassService : ISchoolClassService
     {
         private readonly ISchoolClassRepository _schoolClassRepository;
-        private readonly IHashidsService _hashidsService;
+        private readonly IHashidService _hashidsService;
 
         public SchoolClassService()
         {

@@ -7,6 +7,7 @@ using SchoolJournal.Areas.Admin.Models;
 using SchoolJournal.Areas.Admin.Services;
 using SchoolJournal.Domain;
 using HashidsNet;
+using SchoolJournal.Services;
 
 namespace SchoolJournal.Areas.Admin.Services
 {
@@ -74,9 +75,9 @@ namespace SchoolJournal.Areas.Admin.Services
                 }
             }
             //5 Delete Teacher via his id
-            public async Task<bool> DeleteTeacher(string teacherId)
+            public bool DeleteTeacher(string teacherId)
             {
-                await _teacherRepository.DeleteTeacher(_hashids.Decode(teacherId));
+                _teacherRepository.DeleteTeacher(_hashids.Decode(teacherId));
 
                 if (_teacherRepository.GetTeacher(_hashids.Decode(teacherId)) == null)
                 {

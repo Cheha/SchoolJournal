@@ -11,10 +11,12 @@ namespace SchoolJournal.Data.Repositories
     public class TeacherSchoolClassSubjectRepository : ITeacherSchoolClassSubjectRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly ISchoolClassSubjectRepository _schoolClassSubjectRepository;
 
         public TeacherSchoolClassSubjectRepository()
         {
             _context = new ApplicationDbContext();
+            _schoolClassSubjectRepository = new SchoolClassSubjectRepository();
         }
 
         //Get list TeacherSchoolClassSubject by selected Teacher
@@ -35,6 +37,29 @@ namespace SchoolJournal.Data.Repositories
             else
             {
                 return null;
+            }
+        }
+
+        //Adding new entry between Teacher-And-SchoolClassSubject in table TeacherSchoolClassSubject
+        public void AddNewEntry(int teacherId, int schoolClassId, int subjectId)
+        {
+            
+        }
+
+        //Checking is exists entry between Teacher-And-SchoolClassSubject in table TeacherSchoolClassSubject
+        public async Task<int> CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(int teacherId, int schoolClassId, int SubjectId)
+        {
+            int entrySclClsSubjRes = _schoolClassSubjectRepository.CheckEntryBetweenSchoolClassAndSubjectInDataBase(schoolClassId, SubjectId);
+
+            var result = await _context.TeacherSchoolClassSubjects.Where(x => x.TeacherId == teacherId && x.SchoolClassSubjectId == entrySclClsSubjRes).FirstOrDefaultAsync();
+            //int result = await _context.TeacherSchoolClassSubjects.Where(x => x.TeacherId == teacherId && x.SchoolClassSubjectId== entrySclClsSubjRes).Select(t=>t.Id).FirstOrDefaultAsync();
+            if (result != null)
+            {
+                return result.Id;
+            }
+            else
+            {
+                return 0;
             }
         }
     }
