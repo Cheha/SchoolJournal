@@ -25,6 +25,10 @@
                     {
                         <li>@Html.ActionLink("Профиль", "Index", "TeacherProfile")</li>
                     }
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Панель администратора", "Index", new { area = "Admin", controller = "Admin" })</li>
+                    }
                     <li>@Html.ActionLink("Про программу", "About", "Home")</li>
                     <li>@Html.ActionLink("Обратная связь", "Contact", "Home")</li>
                 </ul>

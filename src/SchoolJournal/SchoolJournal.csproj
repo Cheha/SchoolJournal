@@ -296,6 +296,29 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AdmPanel\css\AdminLTE.css" />
+    <Content Include="Content\AdmPanel\css\AdminLTE.min.css" />
+    <Content Include="Content\AdmPanel\css\skins\skin-blue.css" />
+    <Content Include="Content\AdmPanel\css\skins\skin-blue.min.css" />
+    <Content Include="Content\AdmPanel\img\DefaultAdminAvatar.png" />
+    <Content Include="Content\AdmPanel\js\adminlte.js" />
+    <Content Include="Content\AdmPanel\js\adminlte.min.js" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\AdmPanel\packages\Ionicons\css\ionicons.css" />
+    <Content Include="Content\AdmPanel\packages\Ionicons\css\ionicons.min.css" />
+    <Content Include="Content\AdmPanel\packages\jquery-ui\jquery-ui.js" />
+    <Content Include="Content\AdmPanel\packages\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\AdmPanel\packages\jquery\dist\jquery.js" />
+    <Content Include="Content\AdmPanel\packages\jquery\dist\jquery.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\DefaultAvatar.png" />
@@ -313,8 +336,17 @@
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\AdmPanel\packages\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
