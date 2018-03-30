@@ -8,6 +8,7 @@ namespace SchoolJournal.Data.Repositories
 {
     public interface ISchoolClassSubjectRepository
     {
+        void AddNewEntry(int schoolClassId, int subjectId);
         int CheckEntryBetweenSchoolClassAndSubjectInDataBase(int schoolClassId, int SubjectId);
     }
 }

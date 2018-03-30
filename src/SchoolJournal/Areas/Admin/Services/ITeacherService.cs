@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SchoolJournal.Areas.Admin.Models;
+using SchoolJournal.Models;
 
 namespace SchoolJournal.Areas.Admin.Services
 {

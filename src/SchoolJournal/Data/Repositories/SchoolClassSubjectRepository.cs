@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SchoolJournal.Domain;
 
 namespace SchoolJournal.Data.Repositories
 {
@@ -14,9 +15,32 @@ namespace SchoolJournal.Data.Repositories
                 _context = new ApplicationDbContext();
         }
 
-        public int CheckEntryBetweenSchoolClassAndSubjectInDataBase(int schoolClassId, int SubjectId)
+        //Adding new entry between SchoolClass and Subject
+        public void AddNewEntry(int schoolClassId, int subjectId)
         {
-            var resultEntry = _context.SchoolClassSubjects.Where(x => x.SchoolClassId == schoolClassId && x.SubjectId == SubjectId).FirstOrDefault();
+            _context.SchoolClassSubjects.Add(new SchoolClassSubject
+            {
+                SchoolClassId = schoolClassId,
+                SubjectId = subjectId
+            });
+            _context.SaveChangesAsync();
+        }
+
+        //Removing existing entry between SchoolClass and Subject
+        public void RemoveConnection(int schoolClassId, int subjectId)
+        {
+            var resultId = CheckEntryBetweenSchoolClassAndSubjectInDataBase(schoolClassId, subjectId);
+            if (resultId != 0)
+            {
+                _context.SchoolClassSubjects.Remove(_context.SchoolClassSubjects.Where(x => x.Id==resultId).FirstOrDefault());
+                _context.SaveChangesAsync();
+            }
+        }
+
+        //Checking are exists entry in table SchoolClassSubject between SchoolClass and Subject
+        public int CheckEntryBetweenSchoolClassAndSubjectInDataBase(int schoolClassId, int subjectId)
+        {
+            var resultEntry = _context.SchoolClassSubjects.Where(x => x.SchoolClassId == schoolClassId && x.SubjectId == subjectId).FirstOrDefault();
             if (resultEntry == null)
             {
                 return 0;

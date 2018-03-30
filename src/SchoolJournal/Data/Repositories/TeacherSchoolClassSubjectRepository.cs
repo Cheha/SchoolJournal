@@ -43,7 +43,25 @@ namespace SchoolJournal.Data.Repositories
         //Adding new entry between Teacher-And-SchoolClassSubject in table TeacherSchoolClassSubject
         public void AddNewEntry(int teacherId, int schoolClassId, int subjectId)
         {
-            
+            int entryId =_schoolClassSubjectRepository.CheckEntryBetweenSchoolClassAndSubjectInDataBase(schoolClassId, subjectId);
+            if (entryId != 0) //Creating entry in table TeacherSchoolClassSubjects
+            {
+                _context.TeacherSchoolClassSubjects.Add(new TeacherSchoolClassSubject { SchoolClassSubjectId = entryId, TeacherId = teacherId });
+                _context.SaveChangesAsync();
+            }
+            else if (entryId == 0) // If entry between SchoolClass-And-Subject doesnt exists, create it and add entry to table TeacherSchoolClassSubjects
+            {
+                _schoolClassSubjectRepository.AddNewEntry(schoolClassId, subjectId);
+                _context.TeacherSchoolClassSubjects.Add(new TeacherSchoolClassSubject { SchoolClassSubjectId = entryId, TeacherId = teacherId });
+                _context.SaveChangesAsync();
+            }
+        }
+
+        //Removes entry in tabel TeacherSchoolClassSubject between Teacher and SchoolClassSubject
+        public async void RemoveConnection(int teacherId, int schoolClassId, int subjectId)
+        {
+            int schoolClassSubjectId = _schoolClassSubjectRepository.CheckEntryBetweenSchoolClassAndSubjectInDataBase(schoolClassId, subjectId);
+            _context.TeacherSchoolClassSubjects.Remove(await _context.TeacherSchoolClassSubjects.Where(x=>x.TeacherId==teacherId && x.SchoolClassSubjectId== schoolClassSubjectId).FirstOrDefaultAsync());
         }
 
         //Checking is exists entry between Teacher-And-SchoolClassSubject in table TeacherSchoolClassSubject

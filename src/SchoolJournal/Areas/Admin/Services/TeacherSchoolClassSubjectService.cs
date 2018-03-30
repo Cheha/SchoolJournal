@@ -7,16 +7,12 @@ using SchoolJournal.Domain;
 using System.Threading.Tasks;
 using SchoolJournal.Areas.Admin.Models;
 using SchoolJournal.Services;
+using SchoolJournal.Models;
 
 namespace SchoolJournal.Areas.Admin.Services
 {
-    public class TeacherSchoolClassSubjectService
+    public class TeacherSchoolClassSubjectService : ITeacherSchoolClassSubjectService
     {
-        
-        
-        //удалить класс-И-предмет у учителя
-        //???
-
         private readonly ITeacherSchoolClassSubjectRepository _teacherSclClsSubjRepository;
         private readonly IHashidService _hashidsService;
         private readonly ISchoolClassSubjectRepository _schoolClassSubjectRepository;
@@ -59,27 +55,14 @@ namespace SchoolJournal.Areas.Admin.Services
 
             }
         }
-        public async void RemoveSchoolClassAndSubjectFromTeacher()
+        //Removes entry in tabel TeacherSchoolClassSubject between Teacher and SchoolClassSubject
+        public void RemoveSchoolClassAndSubjectFromTeacher(string teacherNumber, string schoolClassNumber, string subjectNumber)
         {
-
+            _teacherSclClsSubjRepository.RemoveConnection(_hashidsService.Decode(teacherNumber), _hashidsService.Decode(schoolClassNumber), _hashidsService.Decode(subjectNumber));
         }
 
         ////////Сервисные-методы для методов выше
         //
-        //Checking entry between SchoolClass and Subject in SchoolClassSubject table
-        //Проверка есть ли запись в таблице SchoolClass-И-Subject
-        public int CheckEntryBetweenSchoolClassAndSubjectInDataBase(string schoolClassNumber, string SubjectNumber)
-        {
-            int entryId = _schoolClassSubjectRepository.CheckEntryBetweenSchoolClassAndSubjectInDataBase(_hashidsService.Decode(schoolClassNumber), _hashidsService.Decode(SubjectNumber));
-            if (entryId != 0)
-            {
-                return entryId;
-            }
-            else
-            {
-                return 0; 
-            }
-        }
         //Checking entry between SchoolClassSubject and Teacher in TeacherSchoolClassSubject table
         //Проверка есть ли запись в таблице SchoolClassSubject-Teacher
         public async Task<int> CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(string teacherNumber, string schoolClassNumber, string SubjectNumber)
@@ -94,18 +77,5 @@ namespace SchoolJournal.Areas.Admin.Services
                 return 0;
             }
         }
-        //3 Check is Teacher exists using TeacherBuildModel
-        //public async Task<bool> IsThisTeacherExists(TeacherBuildModel model)
-        //{
-        //    List<TeacherViewModel> allTeachers = await GetAllTeachers();
-        //    foreach (TeacherViewModel teacher in allTeachers)
-        //    {
-        //        if (teacher.TeacherFirstName == model.TeacherFirstName && teacher.TeacherLastName == model.TeacherLastName)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
     }
 }

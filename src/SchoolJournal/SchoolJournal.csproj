@@ -209,8 +209,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\TeacherBuildModel.cs" />
-    <Compile Include="Areas\Admin\Models\TeacherViewModel.cs" />
     <Compile Include="Areas\Admin\Services\ITeacherSchoolClassSubjectService.cs" />
     <Compile Include="Areas\Admin\Services\ITeacherService.cs" />
     <Compile Include="Areas\Admin\Services\ISchoolClassSubjectService.cs" />
