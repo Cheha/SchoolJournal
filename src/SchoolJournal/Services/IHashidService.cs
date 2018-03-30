@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolJournal.Services
 {
-    interface IHashidsService
+    interface IHashidService
     {
         string Encode(int id);
         int Decode(string cachedId);

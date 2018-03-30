@@ -76,10 +76,7 @@ namespace SchoolJournal.Areas.Admin.Services
             //5 Delete Teacher via his id
             public async Task<bool> DeleteTeacher(string teacherId)
             {
-            await Task.Run(() =>
-            {
-                _teacherRepository.DeleteTeacher(_hashids.Decode(teacherId));
-            });
+                await _teacherRepository.DeleteTeacher(_hashids.Decode(teacherId));
 
                 if (_teacherRepository.GetTeacher(_hashids.Decode(teacherId)) == null)
                 {

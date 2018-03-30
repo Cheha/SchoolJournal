@@ -9,6 +9,7 @@ namespace SchoolJournal.Data.Repositories
 {
     public interface ITeacherSchoolClassSubjectRepository
     {
-        List<TeacherSchoolClassSubject> GetListOfTeacherSchoolClassSubjects(int teacherId);
+        Task<List<TeacherSchoolClassSubject>> GetListOfTeacherSchoolClassSubjects(int teacherId);
+        Task<Teacher> GetTeacherBySubjectAndSchoolClass(int subjectId, int schoolClassId);
     }
 }

@@ -6,14 +6,15 @@ using SchoolJournal.Data.Repository;
 using SchoolJournal.Models;
 using SchoolJournal.Domain;
 using HashidsNet;
+using SchoolJournal.Services;
 
 namespace SchoolJournal.Services
 {
     public class TeacherService
     {
-        private readonly TeacherRepository _teacherRepository;
+        private readonly ITeacherRepository _teacherRepository;
         //private readonly SchoolClassRepository _schoolClassRepository;
-        private readonly HashidService _hashids;
+        private readonly IHashidService _hashids;
         public TeacherService()
         {
             //_schoolClassRepository = new SchoolClassRepository();

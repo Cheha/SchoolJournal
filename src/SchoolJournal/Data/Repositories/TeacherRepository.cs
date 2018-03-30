@@ -41,9 +41,11 @@ namespace SchoolJournal.Data.Repository
         }
 
         //Delete teacher
-        public void DeleteTeacher(int id)
+        public async void DeleteTeacher(int id)
         {
-            _context.Teachers.Remove(_context.Teachers.Where(x => x.Id == id).Single());
+            _context.Teachers.Remove( await _context.Teachers.Where(x => x.Id == id).SingleOrDefaultAsync());
+            //var result = await  _context.Teachers.Where(x => x.Id == id).SingleOrDefaultAsync();
+            //_context.Teachers.Remove(result);
             _context.SaveChanges();
         }
 
@@ -90,7 +92,7 @@ namespace SchoolJournal.Data.Repository
         {
             return _context.TeacherSchoolClassSubjects.Include("Teacher").Include("SchoolClassSubject").Where(x => x.TeacherId == teacherId).ToList();
         }
-
+        
         public async Task<Teacher> GetTeacherByUserId(string userId)
         {
             return await _context.Teachers.FirstOrDefaultAsync(t => t.UserId == userId);
