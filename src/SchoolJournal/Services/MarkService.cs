@@ -1,4 +1,6 @@
-﻿using SchoolJournal.Data.Repositories;
+﻿using AutoMapper;
+using SchoolJournal.Data.Repositories;
+using SchoolJournal.Domain;
 using SchoolJournal.Models;
 using System;
 using System.Collections.Generic;
@@ -20,18 +22,41 @@ namespace SchoolJournal.Services
 
         public List<MarkViewModel> GetMarks(DateTime dateFrom, DateTime dateTill, string schoolClassId, string subjectId)
         {
-            return _markRepository.GetMarks(
+            var markList = _markRepository.GetMarks(
                 dateFrom,
                 dateTill,
                 _hashidService.Decode(schoolClassId),
                 _hashidService.Decode(subjectId)
-            )
-            .Select(m => new MarkViewModel {
-                Date = m.Date,
-                StudentId = _hashidService.Encode(m.StudentId),
-                SubjectId = _hashidService.Encode(m.SubjectId),
-                Value = m.Value.ToString()
-            }).ToList();
+            );
+
+            return Mapper.Map<List<Mark>, List<MarkViewModel>>(markList);
+        }
+
+        public void SetMark(MarkPostViewModel model)
+        {
+            var mark = Mapper.Map<MarkPostViewModel, Mark>(model);
+
+            var foundedMark = _markRepository.GetMark(mark.Date, mark.StudentId, mark.SubjectId);
+
+            if (foundedMark == null)
+            {
+                if (mark.Value != 0)
+                {
+                    _markRepository.Create(mark);
+                }
+            }
+            else
+            {
+                if (mark.Value == 0)
+                {
+                    _markRepository.Remove(foundedMark);
+                }
+                else
+                {
+                    foundedMark.Value = mark.Value;
+                    _markRepository.Update(foundedMark);
+                }
+            }
         }
     }
 }
