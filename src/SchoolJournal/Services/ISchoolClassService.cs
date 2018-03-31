@@ -10,6 +10,8 @@ namespace SchoolJournal.Services
     interface ISchoolClassService
     {
         List<SchoolClassViewModel> GetAllSchoolClass();
-        
+        List<StudentViewModel> GetStudents(string schoolClassId);
+        List<SubjectViewModel> GetSubjectsList(string schoolClassId);
+
     }
 }

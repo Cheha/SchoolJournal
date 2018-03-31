@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SchoolJournal.Services
 {
-    public class HashidService : IHashidsService
+    public class HashidService : IHashidService
     {
         private readonly Hashids _hashids;
         private readonly string salt = "This is spaartaaaaa";

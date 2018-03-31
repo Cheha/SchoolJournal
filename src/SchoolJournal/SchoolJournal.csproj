@@ -208,13 +208,23 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
+    <Compile Include="Areas\Admin\Services\ITeacherSchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\ITeacherService.cs" />
+    <Compile Include="Areas\Admin\Services\ISchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\SchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\TeacherSchoolClassSubjectService.cs" />
+    <Compile Include="Areas\Admin\Services\TeacherService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TeacherProfileController.cs" />
+    <Compile Include="Data\Repositories\ISchoolClassSubjectRepository.cs" />
     <Compile Include="Data\Repositories\ISubjectRepository.cs" />
+    <Compile Include="Data\Repositories\ITeacherSchoolClassSubjectRepository.cs" />
     <Compile Include="Data\Repositories\MarkRepository.cs" />
+    <Compile Include="Data\Repositories\SchoolClassSubjectRepository.cs" />
     <Compile Include="Data\Repositories\SubjectRepository.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Data\repositories\IStudentRepository.cs" />
@@ -226,6 +236,7 @@
     <Compile Include="Data\Repositories\ITeacherRepository.cs" />
     <Compile Include="Data\Repositories\SchoolClassRepository.cs" />
     <Compile Include="Data\Repositories\TeacherRepository.cs" />
+    <Compile Include="Data\Repositories\TeacherSchoolClassSubjectRepository.cs" />
     <Compile Include="Domain\ApplicationUser.cs" />
     <Compile Include="Domain\Mark.cs" />
     <Compile Include="Domain\SchoolClass.cs" />
@@ -234,6 +245,7 @@
     <Compile Include="Domain\Subject.cs" />
     <Compile Include="Domain\Teacher.cs" />
     <Compile Include="Domain\TeacherSchoolClass.cs" />
+    <Compile Include="Domain\TeacherSchoolClassSubject.cs" />
     <Compile Include="Domain\TeacherSubject.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,6 +266,10 @@
     <Compile Include="Migrations\201803130441155_AddDateToMarks.Designer.cs">
       <DependentUpon>201803130441155_AddDateToMarks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803301333171_DBtableChange.cs" />
+    <Compile Include="Migrations\201803301333171_DBtableChange.Designer.cs">
+      <DependentUpon>201803301333171_DBtableChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -273,7 +289,7 @@
     <Compile Include="Services\IStudentServise.cs" />
     <Compile Include="Services\StudentServise.cs" />
     <Compile Include="Services\HashidService.cs" />
-    <Compile Include="Services\IHashidsService.cs" />
+    <Compile Include="Services\IHashidService.cs" />
     <Compile Include="Services\ISchoolClassService.cs" />
     <Compile Include="Services\ITeacherService.cs" />
     <Compile Include="Services\SchoolClassService.cs" />
@@ -358,7 +374,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Default\" />
   </ItemGroup>
   <ItemGroup>
@@ -382,6 +397,9 @@
     <EmbeddedResource Include="Migrations\201803130441155_AddDateToMarks.resx">
       <DependentUpon>201803130441155_AddDateToMarks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301333171_DBtableChange.resx">
+      <DependentUpon>201803301333171_DBtableChange.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -397,7 +415,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62831</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

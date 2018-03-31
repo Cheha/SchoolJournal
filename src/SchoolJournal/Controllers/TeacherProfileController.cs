@@ -38,7 +38,7 @@ namespace SchoolJournal.Controllers
             var model = new TeacherProfileViewModel();
 
             model.Teacher = await _teacherService.GetTeacherByUserId(userId);
-            model.SchoolClasses = await _teacherService.GetTeachersSchoolClasses(model.Teacher.TeacherId);
+            //TODO model.SchoolClasses = await _teacherService.GetTeachersSchoolClasses(model.Teacher.TeacherId);
 
             return View(model);
         }

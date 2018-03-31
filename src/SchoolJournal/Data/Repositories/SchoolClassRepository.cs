@@ -28,7 +28,6 @@ namespace SchoolJournal.Data.Repositories
             return SchoolClassList;
         }
 
-
         public List<Student> GetStudentsList(int schoolClassId)
         {
             List<Student> studentsList = _context.Students
