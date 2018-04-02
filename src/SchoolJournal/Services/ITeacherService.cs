@@ -9,11 +9,10 @@ namespace SchoolJournal.Services
 {
     public interface ITeacherService
     {
-        TeacherViewModel GetTeacher(string teacherId);
-        List<TeacherViewModel> GetTeachers();
-        List<SchoolClassViewModel> GetTeachersSchoolClasses(string teacherId);
-        bool IsThisTeacherExists(TeacherBuildModel model);
-        bool AddTeacher(TeacherBuildModel model);
+        Task<TeacherViewModel> GetTeacher(string teacherId);
+        Task<List<TeacherViewModel>> GetAllTeachers();
+        Task<bool> IsThisTeacherExists(TeacherBuildModel model);
+        Task<bool> AddTeacher(TeacherBuildModel model);
         bool DeleteTeacher(string teacherId);
         void UpdateTeacher(TeacherViewModel model);
     }

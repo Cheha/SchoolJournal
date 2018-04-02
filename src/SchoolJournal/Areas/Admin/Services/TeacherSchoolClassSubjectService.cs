@@ -24,13 +24,6 @@ namespace SchoolJournal.Areas.Admin.Services
             _schoolClassSubjectRepository = new SchoolClassSubjectRepository();
         }
 
-        //Get List of all Teachers SchoolClassSubject
-        //получить весь список классов-И-предметов по учителю
-        public async Task<List<TeacherSchoolClassSubject>> GetAllTeacherSchoolClassSubjects(string teacherNumber)
-        {
-            var listResult = await _teacherSclClsSubjRepository.GetListOfTeacherSchoolClassSubjects(_hashidsService.Decode(teacherNumber));
-            return listResult;
-        }
         //Get Teacher by Class and Subject
         //получить учителя по классу и предмету (не зная id этой связки в таблице-развязке)
         public async Task<TeacherViewModel> GetTeacherBySubjectAndSchoolClass(string subjectNumber, string schoolClassNumber)

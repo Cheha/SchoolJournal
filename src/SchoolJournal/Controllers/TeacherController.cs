@@ -69,17 +69,17 @@ namespace SchoolJournal.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public async Task<ActionResult> UpdateTeacher(TeacherViewModel model)
+        public ActionResult UpdateTeacher(TeacherViewModel model)
         {
-            await _teacherService.UpdateTeacher(model);
+            _teacherService.UpdateTeacher(model);
             return View("ShowAllTeachers");
         }
         
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public async Task<ActionResult> DeleteTeacher(string  teacherId)
+        public ActionResult DeleteTeacher(string  teacherId)
         {
-            await _teacherService.DeleteTeacher(teacherId);
+            _teacherService.DeleteTeacher(teacherId);
             return View("ShowAllTeachers");
         }
 
