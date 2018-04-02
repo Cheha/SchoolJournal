@@ -16,11 +16,9 @@ namespace SchoolJournal.Data.Repository
         void DeleteTeacher(int id);
         void UpdateTeacher(Teacher model);
 
-        //void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher);
         void AddNewTeacherSubject(Subject newSubject, Teacher teacher);
 
         List<TeacherSubject> GetListOfTeachersSubjects(int teacherId);
-        //List<TeacherSchoolClass> GetListOfTeacherClasses(int teacherId);
         List<TeacherSchoolClassSubject> GetListOfTeacherSchoolClassSubjects(int teacherId);
         Task<Teacher> GetTeacherByUserId(string userId);
     }

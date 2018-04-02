@@ -209,12 +209,11 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TeacherSchoolClassSubjectViewModel.cs" />
     <Compile Include="Areas\Admin\Services\ITeacherSchoolClassSubjectService.cs" />
-    <Compile Include="Areas\Admin\Services\ITeacherService.cs" />
     <Compile Include="Areas\Admin\Services\ISchoolClassSubjectService.cs" />
     <Compile Include="Areas\Admin\Services\SchoolClassSubjectService.cs" />
     <Compile Include="Areas\Admin\Services\TeacherSchoolClassSubjectService.cs" />
-    <Compile Include="Areas\Admin\Services\TeacherService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -244,7 +243,6 @@
     <Compile Include="Domain\Student.cs" />
     <Compile Include="Domain\Subject.cs" />
     <Compile Include="Domain\Teacher.cs" />
-    <Compile Include="Domain\TeacherSchoolClass.cs" />
     <Compile Include="Domain\TeacherSchoolClassSubject.cs" />
     <Compile Include="Domain\TeacherSubject.cs" />
     <Compile Include="Global.asax.cs">

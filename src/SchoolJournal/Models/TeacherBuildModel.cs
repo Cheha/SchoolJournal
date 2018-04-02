@@ -9,5 +9,6 @@ namespace SchoolJournal.Models
     {
         public string TeacherFirstName { get; set; }
         public string TeacherLastName { get; set; }
+        public string TeacherFatherName { get; set; }
     }
 }

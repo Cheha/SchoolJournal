@@ -16,6 +16,9 @@ namespace SchoolJournal.Models
         [Display(Name = "Last name")]
         public string TeacherLastName { get; set; }
 
+        [Display(Name = "Father name")]
+        public string TeacherFatherName { get; set; }
+
         [Display(Name = "Full name")]
         public string TeacherFullName
         {

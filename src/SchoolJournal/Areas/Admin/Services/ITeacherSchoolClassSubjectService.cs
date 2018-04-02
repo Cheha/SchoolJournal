@@ -10,7 +10,6 @@ namespace SchoolJournal.Areas.Admin.Services
 {
     public interface ITeacherSchoolClassSubjectService
     {
-        Task<List<TeacherSchoolClassSubject>> GetAllTeacherSchoolClassSubjects(string teacherNumber);
         Task<TeacherViewModel> GetTeacherBySubjectAndSchoolClass(string subjectNumber, string schoolClassNumber);
         void AddSchoolClassAndSubjectToTeacher(string teacherNumber, string schoolClassNumber, string subjectNumber);
         void RemoveSchoolClassAndSubjectFromTeacher(string teacherNumber, string schoolClassNumber, string subjectNumber);
