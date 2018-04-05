@@ -25,7 +25,7 @@ namespace SchoolJournal.Services
         public async Task<TeacherViewModel> GetTeacher(string teacherId)
         {
             var teacher = await _teacherRepository.GetTeacher(_hashids.Decode(teacherId));
-            return new TeacherViewModel() { TeacherId = teacherId, TeacherFirstName = teacher.FirstName, TeacherLastName = teacher.LastName, TeacherFatherName=teacher.FatherName };
+            return new TeacherViewModel() { TeacherId = teacherId.ToString(), TeacherFirstName = teacher.FirstName, TeacherLastName = teacher.LastName, TeacherFatherName=teacher.FatherName };
         }
         // GetAllTeachers
         public async Task<List<TeacherViewModel>> GetAllTeachers()

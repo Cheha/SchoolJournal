@@ -9,6 +9,7 @@ namespace SchoolJournal.Data.Repositories
 {
     public interface ITeacherSchoolClassSubjectRepository
     {
+        Task<List<SchoolClassSubject>> GetSchoolClassSubjectsByTeacherId(int teacherId);
         Task<Teacher> GetTeacherBySubjectAndSchoolClass(int subjectId, int schoolClassId);
         Task<int> CheckEntryBetweenTeacherAndSchoolClassSubjectInDataBase(int teacherId, int schoolClassId, int SubjectId);
         void AddNewEntry(int teacherId, int schoolClassId, int subjectId);

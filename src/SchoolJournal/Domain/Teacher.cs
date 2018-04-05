@@ -15,6 +15,6 @@ namespace SchoolJournal.Domain
         [Required]
         public string UserId { get; set; }
 
-        //public int SchoolClassId { get; set; } //Для класного руководителя
+        public int SchoolClassId { get; set; } //Для класного руководителя
     }
 }

@@ -22,11 +22,11 @@ namespace SchoolJournal.Controllers
             return View(await _teacherService.GetAllTeachers());
         }
 
-        [HttpGet]
-        public async Task<ActionResult> ShowTeacher(string id)
-        {
-            return View(await _teacherService.GetTeacher(id));
-        }
+        //[HttpGet]
+        //public async Task<ActionResult> ShowTeacher(string id)
+        //{
+        //    return View(await _teacherService.GetTeacher(id));
+        //}
 
         //[HttpGet]
         //public async Task<ActionResult> ShowTeachersClasses(string teacherId)
@@ -61,12 +61,12 @@ namespace SchoolJournal.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        [Authorize(Roles = "admin")]
-        public ActionResult UpdateTeacher(string id)
-        {
-            return View(_teacherService.GetTeacher(id));
-        }
+        //[HttpGet]
+        //[Authorize(Roles = "admin")]
+        //public ActionResult UpdateTeacher(string id)
+        //{
+        //    return View(_teacherService.GetTeacher(id));
+        //}
         [HttpPost]
         [Authorize(Roles = "admin")]
         public ActionResult UpdateTeacher(TeacherViewModel model)

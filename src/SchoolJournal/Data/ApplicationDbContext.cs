@@ -17,7 +17,6 @@ namespace SchoolJournal.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Mark> Marks { get; set; }
         public DbSet<SchoolClassSubject> SchoolClassSubjects { get; set; }
-        //public DbSet<TeacherSchoolClass> TeacherSchoolClasses { get; set; }
         public DbSet<TeacherSchoolClassSubject> TeacherSchoolClassSubjects { get; set; }
         public DbSet<TeacherSubject> TeacherSubjects { get; set; }
 

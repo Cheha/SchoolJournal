@@ -208,7 +208,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeacherAdminController.cs" />
     <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TeacherDetailsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TeacherSchoolClassSubjectViewModel.cs" />
     <Compile Include="Areas\Admin\Services\ITeacherSchoolClassSubjectService.cs" />
     <Compile Include="Areas\Admin\Services\ISchoolClassSubjectService.cs" />
@@ -267,6 +269,10 @@
     <Compile Include="Migrations\201803301333171_DBtableChange.cs" />
     <Compile Include="Migrations\201803301333171_DBtableChange.Designer.cs">
       <DependentUpon>201803301333171_DBtableChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804031328078_TeacherEntityChange.cs" />
+    <Compile Include="Migrations\201804031328078_TeacherEntityChange.Designer.cs">
+      <DependentUpon>201804031328078_TeacherEntityChange.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -373,6 +379,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Default\" />
+    <Folder Include="Areas\Admin\Views\TeacherAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -397,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803301333171_DBtableChange.resx">
       <DependentUpon>201803301333171_DBtableChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031328078_TeacherEntityChange.resx">
+      <DependentUpon>201804031328078_TeacherEntityChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
