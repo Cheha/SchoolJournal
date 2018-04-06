@@ -23,9 +23,9 @@ namespace SchoolJournal.Data.Repository
         }
 
         // GetAllTeachers
-        public Task<List<Teacher>> GetAllTeachers()
+        public async Task<List<Teacher>> GetAllTeachers()
         {
-            return _context.Teachers.ToListAsync();
+            return await _context.Teachers.ToListAsync();
         }
 
         //Create teacher

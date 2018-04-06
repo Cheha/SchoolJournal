@@ -29,15 +29,15 @@ namespace SchoolJournal.Areas.Admin.Controllers
 
         //Get List of all Teachers in DB
         [HttpGet]
-        public ActionResult AllTeachers()
+        public async Task<ActionResult> AllTeachers()
         {
-            return PartialView(_teacherService.GetAllTeachers());
+            return View(await _teacherService.GetAllTeachers());
         }
 
         [HttpGet]
         public async Task<ActionResult> TeacherDetails(string teacherNumber)
         {
-            return PartialView(await _teacherSclClsSubjService.TeacherDetails(teacherNumber));
+            return View(await _teacherSclClsSubjService.TeacherDetails(teacherNumber));
         }
 
         ////////////////////////////////////////////////
