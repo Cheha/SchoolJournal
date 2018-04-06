@@ -12,13 +12,7 @@ namespace SchoolJournal
     {
         protected override void Seed(ApplicationDbContext context)
         {
-            AddDefaultRolesAndUsers(context);
-            base.Seed(context);
-        }
-
-        private void AddDefaultRolesAndUsers(ApplicationDbContext context)
-        {
-            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser> (context));
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             // Default roles
@@ -97,29 +91,31 @@ namespace SchoolJournal
             var geom = new Subject { Name = "Geometry" };
             context.Subjects.Add(geom);
 
-            context.TeacherSubjects.Add(new TeacherSubject {
-                Teacher = teacher,
+            // Relations
+            var sc5Amath = new SchoolClassSubject
+            {
+                SchoolClass = sc5A,
                 Subject = math
-            });
-            context.TeacherSubjects.Add(new TeacherSubject
+            };
+            var sc5Ageom = new SchoolClassSubject
+            {
+                SchoolClass = sc5A,
+                Subject = geom
+            };
+
+            context.SchoolClassSubjects.Add(sc5Amath);
+            context.SchoolClassSubjects.Add(sc5Ageom);
+
+            context.TeacherSchoolClassSubjects.Add(new TeacherSchoolClassSubject
             {
                 Teacher = teacher,
-                Subject = geom
+                SchoolClassSubject = sc5Amath
             });
-
-            context.SchoolClassSubjects.Add(
-                new SchoolClassSubject {
-                    SchoolClass = sc5A,
-                    Subject = math
-                }
-            );
-            context.SchoolClassSubjects.Add(
-                new SchoolClassSubject
-                {
-                    SchoolClass = sc5A,
-                    Subject = geom
-                }
-            );
+            context.TeacherSchoolClassSubjects.Add(new TeacherSchoolClassSubject
+            {
+                Teacher = teacher,
+                SchoolClassSubject = sc5Ageom
+            });
 
             context.SaveChanges();
 
@@ -155,6 +151,7 @@ namespace SchoolJournal
             context.Marks.AddRange(marks);
 
             context.SaveChanges();
+            base.Seed(context);
         }
     }
 }
