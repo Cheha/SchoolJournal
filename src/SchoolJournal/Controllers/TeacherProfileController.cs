@@ -25,7 +25,6 @@ namespace SchoolJournal.Controllers
             _markService = new MarkService();
         }
 
-        // GET: TeacherProfile
         public async Task<ActionResult> Index()
         {
             string userId = User.Identity.GetUserId();
@@ -38,7 +37,7 @@ namespace SchoolJournal.Controllers
             var model = new TeacherProfileViewModel();
 
             model.Teacher = await _teacherService.GetTeacherByUserId(userId);
-            //TODO model.SchoolClasses = await _teacherService.GetTeachersSchoolClasses(model.Teacher.TeacherId);
+            model.SchoolClasses = _teacherService.GetTeachersSchoolClasses(model.Teacher.TeacherId);
 
             return View(model);
         }

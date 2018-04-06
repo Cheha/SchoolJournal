@@ -6,7 +6,7 @@ using SchoolJournal.Data.Repository;
 using SchoolJournal.Models;
 using SchoolJournal.Domain;
 using SchoolJournal.Services;
-
+using AutoMapper;
 
 namespace SchoolJournal.Services
 {
@@ -99,6 +99,17 @@ namespace SchoolJournal.Services
         public List<TeacherSchoolClassSubject> GetListOfTeacherSchoolClassSubjects(string teacherNumber)
         {
             return _teacherRepository.GetListOfTeacherSchoolClassSubjects(_hashids.Decode(teacherNumber));
+        }
+
+        public List<SchoolClassViewModel> GetTeachersSchoolClasses(string teacherNumber)
+        {
+            var result = _teacherRepository.GetTeachersSchoolClasses(_hashids.Decode(teacherNumber));
+
+            return result.Select(sc => new SchoolClassViewModel {
+                SchoolClassNumber = _hashids.Encode(sc.Id),
+                SchoolClassName = sc.Name
+            })
+            .ToList();
         }
     }
 }

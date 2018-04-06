@@ -20,6 +20,7 @@ namespace SchoolJournal.Data.Repository
 
         List<TeacherSubject> GetListOfTeachersSubjects(int teacherId);
         List<TeacherSchoolClassSubject> GetListOfTeacherSchoolClassSubjects(int teacherId);
+        List<SchoolClass> GetTeachersSchoolClasses(int teacherId);
         Task<Teacher> GetTeacherByUserId(string userId);
     }
 }
