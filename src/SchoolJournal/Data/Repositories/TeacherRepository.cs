@@ -6,11 +6,6 @@ using SchoolJournal.Data.Repositories;
 using SchoolJournal.Domain;
 using System.Threading.Tasks;
 
-//Класний керівник має доступ до 
-//всіх оцінок і предметів свого класу.
-// (1-V) Тобто треба добавити ще одну роль - глянеш, як Саша зробив.
-// (2) І відповідно в класі шкільного класу треба зробити foreign key на вчителя, який буде класним керівником.
-
 namespace SchoolJournal.Data.Repository
 {
     public class TeacherRepository : ITeacherRepository
@@ -28,9 +23,9 @@ namespace SchoolJournal.Data.Repository
         }
 
         // GetAllTeachers
-        public Task<List<Teacher>> GetAllTeachers()
+        public async Task<List<Teacher>> GetAllTeachers()
         {
-            return _context.Teachers.ToListAsync();
+            return await _context.Teachers.ToListAsync();
         }
 
         //Create teacher
@@ -44,35 +39,16 @@ namespace SchoolJournal.Data.Repository
         public async void DeleteTeacher(int id)
         {
             _context.Teachers.Remove( await _context.Teachers.Where(x => x.Id == id).SingleOrDefaultAsync());
-            //var result = await  _context.Teachers.Where(x => x.Id == id).SingleOrDefaultAsync();
-            //_context.Teachers.Remove(result);
             _context.SaveChanges();
         }
 
         //Update teacher
-        public void UpdateTeacher(Teacher model)  // НЕт нужды т.к. context один и тот же
+        public void UpdateTeacher(Teacher model)  // Нет нужды т.к. context один и тот же и модель уже есть в нём
         {
             _context.Teachers.Attach(model);
             _context.Entry(model).State = EntityState.Modified;
             _context.SaveChanges();
         }
-
-        //public void UpdateTeacher(Teacher model) // Лишний запрос в БД.
-        //{
-        //    Teacher temp = _context.Teachers.Where(x => x.Id == model.Id).Single();
-        //    temp.FirstName = model.FirstName;
-        //    temp.LastName = model.LastName;
-        //    _context.SaveChanges();
-        //}
-
-
-        
-        ////Add class for teacher
-        //public void AddNewTeacherSchoolClass(SchoolClass newSchoolClass, Teacher thisTeacher)
-        //{
-        //    _context.TeacherSchoolClasses.Add(new TeacherSchoolClass() { Teacher = thisTeacher, SchoolClass = newSchoolClass });
-        //    _context.SaveChanges();
-        //}
 
         //Add subjects for teacher
         public void AddNewTeacherSubject(Subject newSubject, Teacher teacher)
@@ -92,7 +68,8 @@ namespace SchoolJournal.Data.Repository
         {
             return _context.TeacherSchoolClassSubjects.Include("Teacher").Include("SchoolClassSubject").Where(x => x.TeacherId == teacherId).ToList();
         }
-        
+
+        //Get Teacher by usedId
         public async Task<Teacher> GetTeacherByUserId(string userId)
         {
             return await _context.Teachers.FirstOrDefaultAsync(t => t.UserId == userId);

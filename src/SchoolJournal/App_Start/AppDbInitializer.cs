@@ -97,12 +97,6 @@ namespace SchoolJournal
             var geom = new Subject { Name = "Geometry" };
             context.Subjects.Add(geom);
 
-            // Relations
-            //context.TeacherSchoolClasses.Add(new TeacherSchoolClass {
-            //    Teacher = teacher,
-            //    SchoolClass = sc5A
-            //});
-
             context.TeacherSubjects.Add(new TeacherSubject {
                 Teacher = teacher,
                 Subject = math

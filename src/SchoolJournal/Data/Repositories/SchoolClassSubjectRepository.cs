@@ -15,6 +15,9 @@ namespace SchoolJournal.Data.Repositories
                 _context = new ApplicationDbContext();
         }
 
+
+        
+
         //Adding new entry between SchoolClass and Subject
         public void AddNewEntry(int schoolClassId, int subjectId)
         {

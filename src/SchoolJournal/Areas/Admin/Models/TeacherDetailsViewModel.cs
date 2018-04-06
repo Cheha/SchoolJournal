@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using SchoolJournal.Domain;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SchoolJournal.Models
+namespace SchoolJournal.Areas.Admin.Models
 {
-    public class TeacherViewModel
+    public class TeacherDetailsViewModel
     {
         public string TeacherId { get; set; }
 
@@ -22,9 +23,17 @@ namespace SchoolJournal.Models
         [Display(Name = "Full name")]
         public string TeacherFullName
         {
-            get {
-                return String.Format("{0} {1}", TeacherLastName, TeacherFirstName);
+            get
+            {
+                return String.Format("{0} {1} {2}", TeacherLastName, TeacherFirstName, TeacherFatherName);
             }
         }
+
+        //TEACHER AS A USER
+        //public string @MAIL {get;set;}
+        
+        public List<SchoolClass> SchoolClasses { get; set; }
+        public List<Subject> Subjects { get; set; }
+
     }
 }

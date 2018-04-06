@@ -19,11 +19,21 @@ namespace SchoolJournal.Data.Repositories
             _schoolClassSubjectRepository = new SchoolClassSubjectRepository();
         }
 
-        //Get list TeacherSchoolClassSubject by selected Teacher
-        public Task<List<TeacherSchoolClassSubject>> GetListOfTeacherSchoolClassSubjects(int teacherId)
+
+        ////CHECHKING PART OF CODE////
+        //Get all SchoolClassSubject entries by selected Teacher using id
+        public async Task<List<SchoolClassSubject>> GetSchoolClassSubjectsByTeacherId(int teacherId)
         {
-            return _context.TeacherSchoolClassSubjects.Include("Teacher").Include("SchoolClassSubject").Where(x => x.TeacherId == teacherId).ToListAsync();
+            List<SchoolClassSubject> result = await _context.TeacherSchoolClassSubjects.Where(x => x.TeacherId == teacherId).Select(z => z.SchoolClassSubject).ToListAsync();
+            return result;
         }
+        ////CHECHKING PART OF CODE////
+
+
+
+
+
+
 
         //Get Teacher by SchoolClass and Subject
         public async Task<Teacher> GetTeacherBySubjectAndSchoolClass(int subjectId, int schoolClassId)

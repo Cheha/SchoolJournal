@@ -16,21 +16,51 @@ namespace SchoolJournal.Areas.Admin.Services
         private readonly ITeacherSchoolClassSubjectRepository _teacherSclClsSubjRepository;
         private readonly IHashidService _hashidsService;
         private readonly ISchoolClassSubjectRepository _schoolClassSubjectRepository;
+        private readonly ITeacherService _teacherService;
 
         public TeacherSchoolClassSubjectService()
         {
             _teacherSclClsSubjRepository = new TeacherSchoolClassSubjectRepository();
             _hashidsService = new HashidService();
             _schoolClassSubjectRepository = new SchoolClassSubjectRepository();
+            _teacherService = new TeacherService();
         }
 
-        //Get List of all Teachers SchoolClassSubject
-        //получить весь список классов-И-предметов по учителю
-        public async Task<List<TeacherSchoolClassSubject>> GetAllTeacherSchoolClassSubjects(string teacherNumber)
+
+        ////CHECHKING PART OF CODE////
+        //Get TeacherDetailsViewModel
+        public async Task<TeacherDetailsViewModel> TeacherDetails(string teacherNumber)
         {
-            var listResult = await _teacherSclClsSubjRepository.GetListOfTeacherSchoolClassSubjects(_hashidsService.Decode(teacherNumber));
-            return listResult;
+            var tempModel = await _teacherService.GetTeacher(teacherNumber);
+            List<SchoolClassSubject> temp = await TeachersSchoolClassesAndSubjects(teacherNumber);
+            List<SchoolClass> schoolClassList = temp.Select(x => x.SchoolClass).ToList();
+            List<Subject> subjectList = temp.Select(y => y.Subject).ToList();
+
+            return new TeacherDetailsViewModel
+            {
+                TeacherId = teacherNumber,
+                TeacherFirstName = tempModel.TeacherFirstName,
+                TeacherLastName = tempModel.TeacherLastName,
+                TeacherFatherName = tempModel.TeacherFatherName,
+                SchoolClasses = schoolClassList,
+                Subjects = subjectList
+            };
         }
+        //Get list of entries SchoolClassSubjects by Teacher Id
+        //Получить список сущностей записей из таблицы SchoolClassSubject по Teacher Id
+        public async Task<List<SchoolClassSubject>> TeachersSchoolClassesAndSubjects(string teacherNumber)
+        {
+            return await _teacherSclClsSubjRepository.GetSchoolClassSubjectsByTeacherId(_hashidsService.Decode(teacherNumber));
+        }
+        ////CHECHKING PART OF CODE////
+
+
+
+
+
+
+
+
         //Get Teacher by Class and Subject
         //получить учителя по классу и предмету (не зная id этой связки в таблице-развязке)
         public async Task<TeacherViewModel> GetTeacherBySubjectAndSchoolClass(string subjectNumber, string schoolClassNumber)
@@ -44,6 +74,7 @@ namespace SchoolJournal.Areas.Admin.Services
             else
                 return null; //TODO - как красиво кинуть ошибку что нет такой связки?
         }
+
         //Add SchoolClass and Subject to selected Teacher
         //добавить учителю класс-И-предмет
         public async void AddSchoolClassAndSubjectToTeacher(string teacherNumber, string schoolClassNumber, string subjectNumber)
@@ -55,6 +86,7 @@ namespace SchoolJournal.Areas.Admin.Services
 
             }
         }
+
         //Removes entry in tabel TeacherSchoolClassSubject between Teacher and SchoolClassSubject
         public void RemoveSchoolClassAndSubjectFromTeacher(string teacherNumber, string schoolClassNumber, string subjectNumber)
         {

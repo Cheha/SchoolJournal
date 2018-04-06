@@ -14,7 +14,7 @@ namespace SchoolJournal.Controllers
         {
             _teacherService = new TeacherService();
         }
-        
+
 
         [HttpGet]
         public async Task<ActionResult> ShowAllTeachers()
@@ -22,17 +22,12 @@ namespace SchoolJournal.Controllers
             return View(await _teacherService.GetAllTeachers());
         }
 
+
         [HttpGet]
         public async Task<ActionResult> ShowTeacher(string id)
         {
             return View(await _teacherService.GetTeacher(id));
         }
-
-        //[HttpGet]
-        //public async Task<ActionResult> ShowTeachersClasses(string teacherId)
-        //{
-        //    return PartialView(await _teacherService.GetTeachersSchoolClasses(teacherId));
-        //}
 
         [HttpGet]
         [Authorize(Roles = "admin")]
@@ -61,25 +56,25 @@ namespace SchoolJournal.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        [Authorize(Roles = "admin")]
-        public ActionResult UpdateTeacher(string id)
-        {
-            return View(_teacherService.GetTeacher(id));
-        }
+        //[HttpGet]
+        //[Authorize(Roles = "admin")]
+        //public ActionResult UpdateTeacher(string id)
+        //{
+        //    return View(_teacherService.GetTeacher(id));
+        //}
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public async Task<ActionResult> UpdateTeacher(TeacherViewModel model)
+        public ActionResult UpdateTeacher(TeacherViewModel model)
         {
-            await _teacherService.UpdateTeacher(model);
+            _teacherService.UpdateTeacher(model);
             return View("ShowAllTeachers");
         }
         
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public async Task<ActionResult> DeleteTeacher(string  teacherId)
+        public ActionResult DeleteTeacher(string  teacherId)
         {
-            await _teacherService.DeleteTeacher(teacherId);
+            _teacherService.DeleteTeacher(teacherId);
             return View("ShowAllTeachers");
         }
 

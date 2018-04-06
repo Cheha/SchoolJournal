@@ -1,0 +1,21 @@
+﻿@using SchoolJournal.Areas.Admin.Models
+@model TeacherDetailsViewModel
+
+<h2>Профиль Учителя</h2>
+
+<b> @Model.TeacherFullName</b>
+<br>
+<!--<b> //Model.mail</b>-->
+<br>
+<div class="container">
+
+
+
+
+</div>
+
+
+
+
+<b>Вернутся к списку Учителей</b>
+@Html.ActionLink("Список Учителей", "ShowAllTeachers", new { @class = "btn-default" })
