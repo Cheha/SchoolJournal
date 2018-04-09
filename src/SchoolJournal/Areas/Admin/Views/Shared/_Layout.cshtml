@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using SchoolJournal.Helpers
 
 <!DOCTYPE html>
 <html>
@@ -100,17 +101,17 @@
                 </div>
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">МЕНЮ</li>
-                    <li class="active">
+                    <li class="@(Html.IsActive("Teacher") ? "active" : "")">
                         <a href="@Url.Action("Index", new { area = "Admin", controller = "Teacher" })">
                             <i class="fa fa-users"></i> <span>Учителя</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="@(Html.IsActive("Subject") ? "active" : "")">
                         <a href="@Url.Action("Index", new { area = "Admin", controller = "Subject" })">
                             <i class="fa fa-book"></i> <span>Предметы</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="@(Html.IsActive("Student") ? "active" : "")">
                         <a href="@Url.Action("Index", new { area = "Admin", controller = "Student" })">
                             <i class="fa fa-graduation-cap"></i> <span>Школьники</span>
                         </a>
@@ -121,7 +122,7 @@
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    Dashboard
+                    @ViewBag.Title
                     <small>Control panel</small>
                 </h1>
                 <ol class="breadcrumb">
