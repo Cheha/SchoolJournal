@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -79,6 +80,13 @@ namespace SchoolJournal.Controllers
             };
 
             return PartialView("TableOfMarks", model);
+        }
+
+        public ActionResult SetMark(MarkPostViewModel model)
+        {
+            _markService.SetMark(model);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

@@ -277,6 +277,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MarkPostViewModel.cs" />
     <Compile Include="Models\MarkViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\SubjectBindingModel.cs" />
@@ -304,6 +305,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap3-editable\css\bootstrap-editable.css" />
+    <Content Include="Content\bootstrap3-editable\img\clear.png" />
+    <Content Include="Content\bootstrap3-editable\img\loading.gif" />
     <Content Include="Content\Images\DefaultAvatar.png" />
     <Content Include="Content\TeacherProfile.css" />
     <Content Include="favicon.ico" />
@@ -324,6 +328,8 @@
     <Content Include="Areas\Admin\Views\TeacherAdmin\AllTeachers.cshtml" />
     <Content Include="Areas\Admin\Views\TeacherAdmin\TeacherDetails.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap3-editable\bootstrap-editable.js" />
+    <Content Include="Scripts\bootstrap3-editable\bootstrap-editable.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

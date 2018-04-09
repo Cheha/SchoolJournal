@@ -16,6 +16,13 @@ namespace SchoolJournal.Data.Repositories
             _context = new ApplicationDbContext();
         }
 
+        public Mark GetMark(DateTime date, int studentId, int subjectId)
+        {
+            return _context.Marks
+                .Where(m => m.Date == date && m.StudentId == studentId && m.SubjectId == subjectId)
+                .FirstOrDefault();
+        }
+
         public List<Mark> GetMarks(DateTime dateFrom, DateTime dateTill, int schoolClassId, int subjectId)
         {
             return _context.Marks
@@ -24,6 +31,25 @@ namespace SchoolJournal.Data.Repositories
                 .Where(m => m.Date >= dateFrom && m.Date <= dateTill)
                 .Where(m => m.Student.SchoolClassId == schoolClassId)
                 .ToList();
+        }
+
+        public void Create(Mark mark)
+        {
+            _context.Marks.Add(mark);
+            _context.SaveChanges();
+        }
+
+        public void Update(Mark mark)
+        {
+            _context.Marks.Attach(mark);
+            _context.Entry(mark).State = EntityState.Modified;
+            _context.SaveChanges();
+        }
+
+        public void Remove(Mark mark)
+        {
+            _context.Marks.Remove(mark);
+            _context.SaveChanges();
         }
     }
 }

@@ -7,6 +7,7 @@
 
 @section styles{
     <link href="~/Content/TeacherProfile.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
 }
 
 <div class="profile-box">
@@ -24,14 +25,14 @@
             </a>
         </div>
         <div class="teacher-body">
-            @using (Ajax.BeginForm(new AjaxOptions { Url = Url.Action("TableOfMarks"), UpdateTargetId = "tableOfMarks" }))
+            @using (Html.BeginForm())
             {
-            @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
             <div class="form-horizontal">
                 <div class="form-group">
                     @Html.Label("Date from", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div  class="col-md-10">
-                        @Html.TextBox("DateFrom", null, new { type = "date", @class="form-control" })
+                    <div class="col-md-10">
+                        @Html.TextBox("DateFrom", null, new { type = "date", @class = "form-control" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,7 +53,11 @@
                         @Html.DropDownList("SubjectId", new SelectList(string.Empty, "Id", "SubjectName"), htmlAttributes: new { @class = "form-control" })
                     </div>
                 </div>
-                <input type="submit" value="Показать" class="btn btn-default" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button id="btnShow" class="btn btn-default">Показать</button>
+                    </div>
+                </div>
             </div>
             }
         </div>
@@ -62,12 +67,14 @@
             <h3>Оценки</h3>
         </div>
         <div class="marks-body">
-            <div id="tableOfMarks"></div>
+            <div id="tableOfMarks" class="table-responsive"></div>
         </div>
     </aside>
 </div>
 
 @section scripts{
+    <script src="~/Scripts/bootstrap3-editable/bootstrap-editable.min.js"></script>
+
     <script type="text/javascript">
         $(function () {
             $("#SchoolClassId").change(function (e) {
@@ -76,7 +83,10 @@
                 $.ajax({
                     url: '@Url.Action("SchoolClassSubjects")',
                     type: 'GET',
-                    data: { SchoolClassNumber: $("#SchoolClassId").val(), TeacherId: '@Model.Teacher.TeacherId' },
+                    data: {
+                        SchoolClassNumber: $("#SchoolClassId").val(),
+                        TeacherId: '@Model.Teacher.TeacherId'
+                    },
                     success: function (subjects) {
                         $("#SubjectId").append('<option value=""></option>');
                         $.each(subjects, function (i, subject) {
@@ -84,11 +94,67 @@
                         });
                     },
                 });
-            })
-        })
-    </script>
+            });
 
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+            $('#btnShow').click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: '@Url.Action("TableOfMarks")',
+                    type: 'GET',
+                    data: {
+                        DateFrom: $("#DateFrom").val(),
+                        DateTill: $("#DateTill").val(),
+                        SchoolClassId: $("#SchoolClassId").val(),
+                        SubjectId: $("#SubjectId").val()
+                    },
+                    success: function (data) {
+                        processResponse(data)
+                    },
+                });
+            });
+        });
+
+        processResponse = function (data) {
+            $("#tableOfMarks").html(data).promise().done(function () {
+                $(".editable").editable({
+                    emptytext: '-',
+                    type: 'select',
+                    title: 'Выберите оценку',
+                    url: '@Url.Action("SetMark")',
+                    send: 'always',
+                    source: availableMarkValues,
+                    params: function (params) {
+                        {
+                            td = this.closest('td');
+                            mewParams = {
+                                date: $('table thead tr th').eq(td.cellIndex).attr('date'),
+                                subjectId: $('#SubjectId').val(),
+                                studentId: td.closest('tr').id,
+                                value: params.value
+                            };
+                            return mewParams;
+                        }
+                    }
+                });
+            });
+        };
+
+        availableMarkValues = [
+            { value:  '0', text:  '-' },
+            { value:  '1', text:  '1' },
+            { value:  '2', text:  '2' },
+            { value:  '3', text:  '3' },
+            { value:  '4', text:  '4' },
+            { value:  '5', text:  '5' },
+            { value:  '6', text:  '6' },
+            { value:  '7', text:  '7' },
+            { value:  '8', text:  '8' },
+            { value:  '9', text:  '9' },
+            { value: '10', text: '10' },
+            { value: '11', text: '11' },
+            { value: '12', text: '12' }
+        ]
+    </script>
 }
 
 <br />
