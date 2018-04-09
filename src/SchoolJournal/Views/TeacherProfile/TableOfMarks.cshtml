@@ -6,7 +6,7 @@
             <th>Ученик / Дата</th>
             @foreach (var date in Model.Dates)
             {
-                <th date="@date" class="text-right">@date.Day</th>
+                <th date="@date" class="text-center">@date.Day</th>
             }
         </tr>
     </thead>
@@ -20,7 +20,7 @@
                 {
                     var mark = Model.Marks.FirstOrDefault(m => m.Date == date && m.StudentId == student.StudentId);
 
-                    <td class="text-right"><span class="editable">@(mark?.Value)</span></td>
+                    <td class="text-center"><span class="editable">@(mark?.Value)</span></td>
                 }
             </tr>
 
