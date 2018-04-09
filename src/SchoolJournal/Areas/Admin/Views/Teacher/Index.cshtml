@@ -1,0 +1,36 @@
+﻿@using SchoolJournal.Models
+@model List<TeacherViewModel>
+
+@{
+    ViewBag.Title = "All Teachers";
+}
+
+<h2>Список Всех Учителей в Школе</h2>
+
+@*<div class="box">
+    <div class="box-header">
+
+    </div>
+    <div class="box-body table-responsive no-padding">
+
+    </div>
+</div>*@
+
+<div class="conteiner">
+    <table>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+        </tr>
+
+        @foreach (TeacherViewModel teacher in Model)
+        {
+            <tr>
+                <td>@teacher.TeacherLastName</td>
+                <td>@teacher.TeacherFirstName</td>
+                <td>@teacher.TeacherFatherName</td>
+                <td>@Html.ActionLink("Детали", "Details", new { Id = teacher.TeacherId })</td>
+            </tr>
+        }
+    </table>
+</div>

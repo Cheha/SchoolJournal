@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
@@ -208,7 +208,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TeacherAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TeacherDetailsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TeacherSchoolClassSubjectViewModel.cs" />
@@ -348,8 +348,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\TeacherAdmin\AllTeachers.cshtml" />
-    <Content Include="Areas\Admin\Views\TeacherAdmin\TeacherDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Teacher\Details.cshtml" />
     <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\AdmPanel\packages\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
