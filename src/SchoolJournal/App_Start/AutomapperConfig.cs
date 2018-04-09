@@ -11,7 +11,7 @@ namespace SchoolJournal
 {
     public class AutoMapperConfig
     {
-        private static IHashidsService _hashidService = new HashidService();
+        private static IHashidService _hashidService = new HashidService();
 
         public static void RegisterMappings()
         {
