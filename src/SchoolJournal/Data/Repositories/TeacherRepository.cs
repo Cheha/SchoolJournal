@@ -69,6 +69,16 @@ namespace SchoolJournal.Data.Repository
             return _context.TeacherSchoolClassSubjects.Include("Teacher").Include("SchoolClassSubject").Where(x => x.TeacherId == teacherId).ToList();
         }
 
+        public List<SchoolClass> GetTeachersSchoolClasses(int teacherId)
+        {
+            return _context.TeacherSchoolClassSubjects
+                .Where(x => x.TeacherId == teacherId)
+                .Include(x => x.SchoolClassSubject.SchoolClass)
+                .Select(x => x.SchoolClassSubject.SchoolClass)
+                .Distinct()
+                .ToList();
+        }
+
         //Get Teacher by usedId
         public async Task<Teacher> GetTeacherByUserId(string userId)
         {

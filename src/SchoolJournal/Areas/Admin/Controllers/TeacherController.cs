@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 namespace SchoolJournal.Areas.Admin.Controllers
 {
     [Authorize(Roles = "admin")]
-    public class TeacherAdminController : Controller
+    public class TeacherController : Controller
     {
         private readonly ITeacherService _teacherService;
         private readonly ITeacherSchoolClassSubjectService _teacherSclClsSubjService;
         private readonly ISchoolClassSubjectService _schoolClsSubjService;
 
-        public TeacherAdminController()
+        public TeacherController()
         {
             _teacherService = new TeacherService();
             _teacherSclClsSubjService = new TeacherSchoolClassSubjectService();
@@ -29,15 +29,16 @@ namespace SchoolJournal.Areas.Admin.Controllers
 
         //Get List of all Teachers in DB
         [HttpGet]
-        public async Task<ActionResult> AllTeachers()
+        public async Task<ActionResult> Index()
         {
-            return View(await _teacherService.GetAllTeachers());
+            var model = await _teacherService.GetAllTeachers();
+            return View(model);
         }
 
         [HttpGet]
-        public async Task<ActionResult> TeacherDetails(string teacherNumber)
+        public async Task<ActionResult> Details(string id)
         {
-            return View(await _teacherSclClsSubjService.TeacherDetails(teacherNumber));
+            return View(await _teacherSclClsSubjService.TeacherDetails(id));
         }
 
         ////////////////////////////////////////////////

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -25,7 +26,6 @@ namespace SchoolJournal.Controllers
             _markService = new MarkService();
         }
 
-        // GET: TeacherProfile
         public async Task<ActionResult> Index()
         {
             string userId = User.Identity.GetUserId();
@@ -38,7 +38,7 @@ namespace SchoolJournal.Controllers
             var model = new TeacherProfileViewModel();
 
             model.Teacher = await _teacherService.GetTeacherByUserId(userId);
-            //TODO model.SchoolClasses = await _teacherService.GetTeachersSchoolClasses(model.Teacher.TeacherId);
+            model.SchoolClasses = _teacherService.GetTeachersSchoolClasses(model.Teacher.TeacherId);
 
             return View(model);
         }
@@ -80,6 +80,13 @@ namespace SchoolJournal.Controllers
             };
 
             return PartialView("TableOfMarks", model);
+        }
+
+        public ActionResult SetMark(MarkPostViewModel model)
+        {
+            _markService.SetMark(model);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

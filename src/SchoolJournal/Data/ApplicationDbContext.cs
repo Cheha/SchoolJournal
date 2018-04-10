@@ -20,10 +20,7 @@ namespace SchoolJournal.Data
         public DbSet<TeacherSchoolClassSubject> TeacherSchoolClassSubjects { get; set; }
         public DbSet<TeacherSubject> TeacherSubjects { get; set; }
 
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-       //     : base("SchoolClassDB", throwIfV1Schema: false)
-            
+        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
