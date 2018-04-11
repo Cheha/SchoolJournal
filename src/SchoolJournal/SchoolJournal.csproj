@@ -210,6 +210,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeacherController.cs" />
     <Compile Include="Areas\Admin\Models\SchoolClassViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TeacherCreateViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TeacherDetailsViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TeacherSchoolClassSubjectViewModel.cs" />
     <Compile Include="Areas\Admin\Services\ITeacherSchoolClassSubjectService.cs" />
@@ -360,6 +361,7 @@
     <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\AdmPanel\packages\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\AdmPanel\packages\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Teacher\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap3-editable\bootstrap-editable.js" />
     <Content Include="Scripts\bootstrap3-editable\bootstrap-editable.min.js" />

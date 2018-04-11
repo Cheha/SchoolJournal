@@ -88,5 +88,10 @@ namespace SchoolJournal.Areas.Admin.Controllers
             _teacherSclClsSubjService.RemoveSchoolClassAndSubjectFromTeacher(teacherNumber, schoolClassNumber, subjectNumber);
             return RedirectToAction("TeacherDetails");
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
