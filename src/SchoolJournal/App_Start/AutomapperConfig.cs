@@ -6,6 +6,7 @@ using AutoMapper;
 using SchoolJournal.Domain;
 using SchoolJournal.Models;
 using SchoolJournal.Services;
+using AdminModels = SchoolJournal.Areas.Admin.Models;
 
 namespace SchoolJournal
 {
@@ -27,6 +28,8 @@ namespace SchoolJournal
                 cfg.CreateMap<MarkPostViewModel, Mark>()
                     .ForMember(dest => dest.StudentId, opt => opt.MapFrom(src => _hashidService.Decode(src.StudentId)))
                     .ForMember(dest => dest.SubjectId, opt => opt.MapFrom(src => _hashidService.Decode(src.SubjectId)));
+
+                cfg.CreateMap<AdminModels.TeacherCreateViewModel, Teacher>();
             });
         }
     }

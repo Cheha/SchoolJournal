@@ -32,7 +32,6 @@ namespace SchoolJournal.Areas.Admin.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Password")]
         [Display(Name = "Подтверждение")]
         public string PasswordConfirm { get; set; }
     }
