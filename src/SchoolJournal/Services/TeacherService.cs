@@ -88,7 +88,7 @@ namespace SchoolJournal.Services
                 {
                     foreach (string errorMessage in result.Errors)
                     {
-                        _validatonDictionary.AddError("Error", errorMessage);
+                        _validatonDictionary.AddError("", errorMessage);
                     }
                     return false;
                 }
