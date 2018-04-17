@@ -8,7 +8,7 @@ using SchoolJournal.Areas.Admin.Services;
 using SchoolJournal.Models;
 using SchoolJournal.Areas.Admin.Models;
 using System.Threading.Tasks;
-
+using System.Net;
 
 namespace SchoolJournal.Areas.Admin.Controllers
 {
@@ -22,10 +22,10 @@ namespace SchoolJournal.Areas.Admin.Controllers
         public TeacherController()
         {
             _teacherService = new TeacherService();
+            _teacherService.Initialize(new ModelStateWrapper(this.ModelState));
             _teacherSclClsSubjService = new TeacherSchoolClassSubjectService();
             _schoolClsSubjService = new SchoolClassSubjectService();
         }
-
 
         //Get List of all Teachers in DB
         [HttpGet]
@@ -48,19 +48,6 @@ namespace SchoolJournal.Areas.Admin.Controllers
         {
             return PartialView(_teacherService.GetTeacher(teacherNumber));
         }
-
-        //TODO
-        //////ПО ФАКТУ ТУТ ЕЩЁ СОЗДАЁТСЯ ПОЛЬЗОВАТЕЛЬ И БЫЛО Б НЕПЛОХО ЕГО СОЗДАТЬ В USER-СЕРВИСАХ
-        ////////Add Teacher to DB
-        //////[HttpPost]
-        //////public ActionResult AddTeacher(TeacherBuildModel model)
-        //////{
-        //////    if (ModelState.IsValid)
-        //////    {
-        //////        _teacherService.AddTeacher(model);
-        //////    }
-        //////    return RedirectToAction("AllTeachers");
-        //////}
 
         //Update Teacher
         [HttpPost]
@@ -87,6 +74,40 @@ namespace SchoolJournal.Areas.Admin.Controllers
         {
             _teacherSclClsSubjService.RemoveSchoolClassAndSubjectFromTeacher(teacherNumber, schoolClassNumber, subjectNumber);
             return RedirectToAction("TeacherDetails");
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(TeacherCreateViewModel model)
+        {
+            if (model == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (model.Password != model.PasswordConfirm)
+            {
+                ModelState.AddModelError("PasswordConfirm", "Пароль и подтверждение пароля не совпадают.");
+                return View(model);
+            }
+
+            var teacherAdded = await _teacherService.AddTeacher(model);
+
+            if (!teacherAdded)
+            {
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

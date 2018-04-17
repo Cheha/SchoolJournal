@@ -7,6 +7,9 @@ using SchoolJournal.Models;
 using SchoolJournal.Domain;
 using SchoolJournal.Services;
 using AutoMapper;
+using SchoolJournal.Areas.Admin.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using SchoolJournal.Data;
 
 namespace SchoolJournal.Services
 {
@@ -14,12 +17,20 @@ namespace SchoolJournal.Services
     {
         private readonly ITeacherRepository _teacherRepository;
         private readonly IHashidService _hashids;
+        private readonly ApplicationUserManager _userManager;
+        private IValidationDictionary _validatonDictionary;
+
         public TeacherService()
         {
             _teacherRepository = new TeacherRepository();
             _hashids = new HashidService();
+            _userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
         }
 
+        public void Initialize(IValidationDictionary validationDictionary)
+        {
+            _validatonDictionary = validationDictionary;
+        }
 
         // GetTeacher by id
         public async Task<TeacherViewModel> GetTeacher(string teacherId)
@@ -31,15 +42,15 @@ namespace SchoolJournal.Services
         public async Task<List<TeacherViewModel>> GetAllTeachers()
         {
             var teachers = await _teacherRepository.GetAllTeachers();
-            return teachers.Select(x => new TeacherViewModel() { TeacherId = _hashids.Encode(x.Id), TeacherFirstName = x.FirstName, TeacherLastName = x.LastName }).ToList();
+            return teachers.Select(x => new TeacherViewModel() { TeacherId = _hashids.Encode(x.Id), TeacherFirstName = x.FirstName, TeacherLastName = x.LastName, TeacherFatherName = x.FatherName }).ToList();
         }
         // Check is Teacher exists using TeacherBuildModel
-        public async Task<bool> IsThisTeacherExists(TeacherBuildModel model)
+        public async Task<bool> IsThisTeacherExists(TeacherCreateViewModel model)
         {
             List<TeacherViewModel> allTeachers = await GetAllTeachers();
             foreach (TeacherViewModel teacher in allTeachers)
             {
-                if (teacher.TeacherFirstName == model.TeacherFirstName && teacher.TeacherLastName == model.TeacherLastName && teacher.TeacherFatherName==model.TeacherFatherName)
+                if (teacher.TeacherFirstName == model.FirstName && teacher.TeacherLastName == model.LastName && teacher.TeacherFatherName==model.FatherName)
                 {
                     return true;
                 }
@@ -47,12 +58,45 @@ namespace SchoolJournal.Services
             return false;
         }
         // Add new Teacher
-        public async Task<bool> AddTeacher(TeacherBuildModel model)
+        public async Task<bool> AddTeacher(TeacherCreateViewModel model)
         {
-            bool result = await IsThisTeacherExists(model);
-            if (!result)
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+
+            if (existingUser != null)
             {
-                _teacherRepository.CreateTeacher(new Teacher { FirstName = model.TeacherFirstName, LastName = model.TeacherLastName });
+                _validatonDictionary.AddError("Email", "Пользователь с таким e-mail уже существует.");
+            }
+
+            bool teacherExist = await IsThisTeacherExists(model);
+
+            if (teacherExist)
+            {
+                _validatonDictionary.AddError("", "Учитель с таким ФИО уже существует.");
+            }
+
+            if (_validatonDictionary.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    Email = model.Email,
+                    UserName = model.Email
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (!result.Succeeded)
+                {
+                    foreach (string errorMessage in result.Errors)
+                    {
+                        _validatonDictionary.AddError("", errorMessage);
+                    }
+                    return false;
+                }
+
+                var teacher = Mapper.Map<Teacher>(model);
+                teacher.UserId = user.Id;
+
+                _teacherRepository.CreateTeacher(teacher);
                 return true;
             }
             else
@@ -101,11 +145,11 @@ namespace SchoolJournal.Services
             return _teacherRepository.GetListOfTeacherSchoolClassSubjects(_hashids.Decode(teacherNumber));
         }
 
-        public List<SchoolClassViewModel> GetTeachersSchoolClasses(string teacherNumber)
+        public List<SchoolJournal.Models.SchoolClassViewModel> GetTeachersSchoolClasses(string teacherNumber)
         {
             var result = _teacherRepository.GetTeachersSchoolClasses(_hashids.Decode(teacherNumber));
 
-            return result.Select(sc => new SchoolClassViewModel {
+            return result.Select(sc => new SchoolJournal.Models.SchoolClassViewModel {
                 SchoolClassNumber = _hashids.Encode(sc.Id),
                 SchoolClassName = sc.Name
             })
